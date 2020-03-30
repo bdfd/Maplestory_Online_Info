@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 //router address: /note/01
 //descriptions:Article 01 Page
 //comments:Article 01 Page
-router.get('/', function(req, res, next) {
+router.get('/01', function(req, res, next) {
   res.render('07Training_Article/01_fast_level_training', {
     title: 'Article 01 Page'
   });
