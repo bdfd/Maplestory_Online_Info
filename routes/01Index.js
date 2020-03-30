@@ -7,7 +7,10 @@ var router = express.Router();
 //descriptions: Index Page
 //comments: www.maplestoryinfo.tk
 router.get('/', function(req, res, next) {
-  res.render('01Index/index', { title: 'Index Page' });
+  res.render('01Index/index', {
+    // title: 'Home Page',
+    layout: 'page_layouts/01Index_Login_Layout'
+  });
 });
 
 //router address: /home
