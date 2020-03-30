@@ -10,8 +10,14 @@ var cors = require('cors');
 
 // require('./secret/db');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var indexRouter = require('./routes/01Index');
+var userRouter = require('./routes/02User');
+var charRouter = require('./routes/03Character');
+var equipRouter = require('./routes/04Equipment');
+var marketRouter = require('./routes/05Market_Trend');
+var petRouter = require('./routes/06Pet');
+var trianingRouter = require('./routes/07Training_Article');
+var otherRouter = require('./routes/08Other');
 
 var app = express();
 
@@ -31,7 +37,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/user', userRouter);
+app.use('/character', charRouter);
+app.use('/equipment', equipRouter);
+app.use('/market', marketRouter);
+app.use('/pet', petRouter);
+app.use('/note', trianingRouter);
+app.use('/other', otherRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
