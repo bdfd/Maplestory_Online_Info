@@ -3,18 +3,17 @@ const Schema = mongoose.Schema;
 
 //Create Character_Class Schema
 const Character_ClassSchema = new Schema({
-  Class_Id: {
-    type: String,
-    required: true
+  Class_No: {
+    type: Number,
+    required: true,
+    unique: true,
+    min: 1,
+    max: 15
   },
   Class_Name: {
     type: String,
-    required: true
-  },
-  Category_Type: {
-    type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'Character_Category'
+    maxlength: 20
   }
 });
 

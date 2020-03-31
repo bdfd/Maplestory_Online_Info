@@ -4,12 +4,16 @@ const Schema = mongoose.Schema;
 //Create Character_Category Schema
 const Character_CategorySchema = new Schema({
   Category_ID: {
-    type: String,
-    required: true
+    type: Number,
+    required: true,
+    unique: true,
+    min: 1,
+    max: 15
   },
   Category_Name: {
     type: String,
-    required: true
+    required: true,
+    maxlength: 20
   }
 });
 
