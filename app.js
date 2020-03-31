@@ -6,9 +6,15 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var expressLayouts = require('express-ejs-layouts');
 var cors = require('cors');
-// var fs = require('fs');
+var mongoose = require('mongoose');
 
-// require('./secret/db');
+//DB Configuration
+const db = require('./config/key').MongoURI;
+//Connect to MongoDB
+mongoose
+  .connect(db, { useNewUrlParser: true })
+  .then(() => console.log('MongoDB connection is online...'))
+  .catch(err => console.log('error in creating DB' + err));
 
 var indexRouter = require('./routes/01Index');
 var userRouter = require('./routes/02User');

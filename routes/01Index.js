@@ -8,16 +8,20 @@ var router = express.Router();
 //comments: www.maplestoryinfo.tk
 router.get('/', function(req, res, next) {
   res.render('01Index/index', {
-    // title: 'Home Page',
-    layout: 'page_layouts/01Index_Login_Layout'
+    // title: 'Entrance Page',
+    layout: 'page_layouts/index_layout'
   });
 });
 
 //router address: /home
-//descriptions: Home Page
-//comments:enter selection list page
+//descriptions: Home Index Page
+//comments: Selection Page -> select the part to view details
+
 router.get('/home', function(req, res, next) {
-  res.render('01Index/home', { title: 'Home Page' });
+  res.render('01Index/home', {
+    // title: 'Entrance Page',
+    layout: 'page_layouts/home_layout'
+  });
 });
 
 module.exports = router;
