@@ -9,8 +9,7 @@
         <th scope="col">Category_ID</th>
         <th scope="col">Category_Name</th>   
         <th scope="col">View</th>    
-        <th scope="col">Edit</th>
-        <th scope="col">Delete</th>
+        <th scope="col">Edit</th>    
       </tr>
     </thead>
     <tbody>
@@ -18,9 +17,8 @@
         <tr>
           <th scope="row"><%=character_category[i].Category_ID%></th>
           <td><%=character_category[i].Category_Name%></td>
-          <td><a >View</a></td>
-          <td><a >Edit</a></td>      
-          <td><a >Delete</a></td>
+          <td><a href="/user/character_category/<%=character_category[i].id%>">View</a></td>
+          <td><a href="/user/character_category/<%=character_category[i].id%>/edit">Edit</a></td>       
         </tr>
     <% } %>
     </tbody>

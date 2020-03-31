@@ -1,1 +1,40 @@
-edit character category
+<script>
+  document.title = 'Character Category Edit Page';
+</script>
+<p>
+  edit character category
+</p>
+
+<div>
+  <form
+    action="/user/character_category/<%=character_category.id%>/edit?_method=put"
+    method="post"
+  >
+    <div>
+      <label for="Category_ID">Category ID : </label>
+      <input
+        type="text"
+        name="Category_ID"
+        class="form-control"
+        placeholder="Category_ID"
+        value="<%=character_category.Category_ID%>"
+      />
+    </div>
+    <div>
+      <label for="Category_Name">Category_Name : </label>
+      <input
+        type="text"
+        name="Category_Name"
+        class="form-control"
+        placeholder="Category_Name"
+        value="<%=character_category.Category_Name%>"
+      />
+    </div>
+    <a href="/user/character_category/<%=character_category.id%>">
+      Go Back To Character Category Detail</a
+    ><br />
+    <a href="/user/character_category"> Go Back To Character Category List</a
+    ><br />
+    <button type="submit">Update Character Category</button>
+  </form>
+</div>

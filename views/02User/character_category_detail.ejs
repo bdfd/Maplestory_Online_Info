@@ -1,0 +1,27 @@
+<script>
+  document.title = 'Character Category Detail';
+</script>
+
+<p>
+  View Specific Character Category Information
+</p>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Category_ID</th>
+      <th scope="col">Category_Name</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%=character_category.Category_ID%></th>
+      <td><%=character_category.Category_Name%></td>
+      <td>
+        <a href="/user/character_category/<%=character_category.id%>/edit"
+          >Edit</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -34,7 +34,7 @@ router.get('/character_category', async (req, res, next) => {
     });
     // console.log(character_category);
   } catch (err) {
-    console.log('err during during /user/character_category ' + err);
+    console.log('err during get /user/character_category ' + err);
   }
 });
 
@@ -62,7 +62,7 @@ router.post('/character_category/new', async (req, res, next) => {
     res.redirect('/user/character_category/new');
   } catch (err) {
     console.log(
-      'err during during post /user/character_category/new create new character_category ' +
+      'err during post /user/character_category/new create new character_category ' +
         err
     );
     res.render('/user/character_category/new', {
@@ -76,10 +76,61 @@ router.post('/character_category/new', async (req, res, next) => {
 //router address: /user/character_category/:id
 //descriptions: Edit Character Category
 //comments:
-router.get('/character_category/:id', (req, res, next) => {
-  res.render('02User/character_category_edit', {});
+router.get('/character_category/:id', async (req, res, next) => {
+  try {
+    let character_category = await Character_Category.findById(req.params.id);
+    res.render('02User/character_category_detail', {
+      character_category: character_category
+    });
+  } catch (err) {
+    console.log('err during get /user/character_category/:id ' + err);
+    res.redirect('/user');
+  }
 });
 
+//router address /user/character_category/:id/edit
+//descriptions: Show Detail Character Category Revise Form
+//comments: Show detail information of a Character Category
+router.get('/character_category/:id/edit', async (req, res, next) => {
+  try {
+    let character_category = await Character_Category.findById(req.params.id);
+    res.render('02User/character_category_edit', {
+      character_category: character_category
+    });
+    console.log(character_category);
+  } catch (err) {
+    console.log('err during get /user/character_category/:id/edit ' + err);
+    res.redirect('/user');
+  }
+});
+
+//router address /user/character_category/:id/edit
+//descriptions: Update Detail Character Category Information
+//comments: Change detail information of Character Category
+router.put('/character_category/:id/edit', async (req, res, next) => {
+  let character_category;
+  try {
+    character_category = await Character_Category.findById(req.params.id);
+    (character_category.Category_ID = req.body.Category_ID),
+      (character_category.Category_Name = req.body.Category_Name),
+      await character_category.save();
+    res.redirect('/user/character_category');
+  } catch (err) {
+    if (character_category == null) {
+      console.log(
+        'err during put /user/character_category/:id/edit can not find this Character Category on exist database' +
+          err
+      );
+      res.redirect('/user');
+    } else {
+      console.log(
+        'err during put /user/character_category/:id/edit update specific question information ' +
+          err
+      );
+      res.redirect('/user');
+    }
+  }
+});
 /* 
 Character Class Function Router Start Here
 */
@@ -95,7 +146,7 @@ router.get('/character_class', async (req, res, next) => {
     });
     // console.log(character_class);
   } catch (err) {
-    console.log('err during during /user/character_category ' + err);
+    console.log('err during get /user/character_class ' + err);
   }
 });
 
@@ -128,13 +179,6 @@ router.post('/character_class/new', async (req, res, next) => {
       error: 'Error in post /user/character_class/new Creating Character_Class'
     });
   }
-});
-
-//router address: /user/edit/character_category
-//descriptions: Edit Character Category
-//comments:
-router.get('/edit/character_class', (req, res, next) => {
-  res.render('02User/character_class_edit', {});
 });
 
 module.exports = router;

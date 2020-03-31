@@ -6,6 +6,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var expressLayouts = require('express-ejs-layouts');
 var cors = require('cors');
+var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 
 //DB Configuration
@@ -38,6 +39,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
+app.use(methodOverride('_method'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
