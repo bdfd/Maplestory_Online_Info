@@ -1,1 +1,39 @@
-edit character category
+<script>
+  document.title = 'Character Class Edit Page';
+</script>
+<p>
+  edit character class
+</p>
+
+<div>
+  <form
+    action="/user/character_class/<%=character_class.id%>/edit?_method=put"
+    method="post"
+  >
+    <div>
+      <label for="Class_No">Class No : </label>
+      <input
+        type="text"
+        name="Class_No"
+        class="form-control"
+        placeholder="Class_No"
+        value="<%=character_class.Class_No%>"
+      />
+    </div>
+    <div>
+      <label for="Class_Name">Class_Name : </label>
+      <input
+        type="text"
+        name="Class_Name"
+        class="form-control"
+        placeholder="Class_Name"
+        value="<%=character_class.Class_Name%>"
+      />
+    </div>
+    <a href="/user/character_class/<%=character_class.id%>">
+      Go Back To Character Class Detail</a
+    ><br />
+    <a href="/user/character_class"> Go Back To Character Class List</a><br />
+    <button type="submit">Update Character Class</button>
+  </form>
+</div>

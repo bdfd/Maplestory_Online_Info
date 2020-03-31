@@ -20,7 +20,13 @@ router.get('/dashboard', (req, res, next) => {
 });
 
 /* 
+
+
+
 Character Category Function Router Start Here
+
+
+
 */
 
 //router address: /user/character_category
@@ -74,7 +80,7 @@ router.post('/character_category/new', async (req, res, next) => {
 });
 
 //router address: /user/character_category/:id
-//descriptions: Edit Character Category
+//descriptions: View Character Category
 //comments:
 router.get('/character_category/:id', async (req, res, next) => {
   try {
@@ -97,7 +103,7 @@ router.get('/character_category/:id/edit', async (req, res, next) => {
     res.render('02User/character_category_edit', {
       character_category: character_category
     });
-    console.log(character_category);
+    // console.log(character_category);
   } catch (err) {
     console.log('err during get /user/character_category/:id/edit ' + err);
     res.redirect('/user');
@@ -124,15 +130,22 @@ router.put('/character_category/:id/edit', async (req, res, next) => {
       res.redirect('/user');
     } else {
       console.log(
-        'err during put /user/character_category/:id/edit update specific question information ' +
+        'err during put /user/character_category/:id/edit update specific character category information ' +
           err
       );
       res.redirect('/user');
     }
   }
 });
+
 /* 
+
+
+
 Character Class Function Router Start Here
+
+
+
 */
 
 //router address: /user/character_class
@@ -180,5 +193,74 @@ router.post('/character_class/new', async (req, res, next) => {
     });
   }
 });
+
+//router address: /user/character_class/:id
+//descriptions: View Character Class
+//comments:
+router.get('/character_class/:id', async (req, res, next) => {
+  try {
+    let character_class = await Character_Class.findById(req.params.id);
+    res.render('02User/character_class_detail', {
+      character_class: character_class
+    });
+  } catch (err) {
+    console.log('err during get /user/character_class/:id ' + err);
+    res.redirect('/user');
+  }
+});
+
+//router address /user/character_class/:id/edit
+//descriptions: Show Detail Character Class Revise Form
+//comments: Show detail information of a Character Class
+router.get('/character_class/:id/edit', async (req, res, next) => {
+  try {
+    let character_class = await Character_Class.findById(req.params.id);
+    res.render('02User/character_class_edit', {
+      character_class: character_class
+    });
+  } catch (err) {
+    console.log('err during get /user/character_class/:id/edit ' + err);
+    res.redirect('/user');
+  }
+});
+
+//router address /user/character_class/:id/edit
+//descriptions: Update Detail Character Class Information
+//comments: Change detail information of Character Class
+router.put('/character_class/:id/edit', async (req, res, next) => {
+  let character_class;
+  try {
+    character_class = await Character_Class.findById(req.params.id);
+    (character_class.Class_No = req.body.Class_No),
+      (character_class.Class_Name = req.body.Class_Name),
+      await character_class.save();
+    console.log(character_class);
+    res.redirect('/user/character_class');
+  } catch (err) {
+    if (character_class == null) {
+      console.log(
+        'err during put /user/character_class/:id/edit can not find this Character Class on exist database' +
+          err
+      );
+      res.redirect('/user');
+    } else {
+      console.log(
+        'err during put /user/character_class/:id/edit update specific character class information ' +
+          err
+      );
+      res.redirect('/user');
+    }
+  }
+});
+
+/* 
+
+
+
+Character Job Function Router Start Here
+
+
+
+*/
 
 module.exports = router;

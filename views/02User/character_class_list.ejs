@@ -10,7 +10,6 @@
         <th scope="col">Class_Name</th>   
         <th scope="col">View</th>    
         <th scope="col">Edit</th>
-        <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -18,9 +17,8 @@
         <tr>
           <th scope="row"><%=character_class[i].Class_No%></th>
           <td><%=character_class[i].Class_Name%></td>
-          <td><a >View</a></td>
-          <td><a >Edit</a></td>      
-          <td><a >Delete</a></td>
+          <td><a href="/user/character_class/<%=character_class[i].id%>">View</a></td>
+          <td><a href="/user/character_class/<%=character_class[i].id%>/edit">Edit</a></td>   
         </tr>
     <% } %>
     </tbody>
