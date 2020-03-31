@@ -1,1 +1,28 @@
-list all character category
+<script>
+    document.title = 'Character Category List';
+</script>
+
+<p>Character Category List</p>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Category_ID</th>
+        <th scope="col">Category_Name</th>   
+        <th scope="col">View</th>    
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% for (var i = 0; i <character_category.length; i++) {%>
+        <tr>
+          <th scope="row"><%=character_category[i].Category_ID%></th>
+          <td><%=character_category[i].Category_Name%></td>
+          <td><a >View</a></td>
+          <td><a >Edit</a></td>      
+          <td><a >Delete</a></td>
+        </tr>
+    <% } %>
+    </tbody>
+</table>
+
