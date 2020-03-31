@@ -9,7 +9,25 @@ const Character_Class = require('../models/Character_Class');
 //descriptions: User Login Page
 //comments: Enterance of edit list page
 router.get('/', function(req, res, next) {
-  res.render('02User/login', { title: 'User Login Page' });
+  res.render('02User/login');
+});
+
+//router address: /user/dashboard
+//descriptions: User Login Page
+//comments: Enterance of edit list page
+router.get('/dashboard', function(req, res, next) {
+  res.render('02User/dashboard');
+});
+
+/* 
+Character Category Function Router Start Here
+*/
+
+//router address: /user/character_category
+//descriptions: Character_Category List
+//comments: Demo all Character_Category Info
+router.get('/character_category', (req, res, next) => {
+  res.render('02User/character_category_list');
 });
 
 //router address: /user/add/character_category
@@ -47,22 +65,23 @@ router.post('/add/character_category', async (req, res, next) => {
 });
 
 //router address: /user/edit/character_category
-//descriptions: edit character category
+//descriptions: Edit Character Category
 //comments:
 router.get('/edit/character_category', function(req, res, next) {
-  res.render('02User/character_category_edit', {
-    title: 'Edit Char Category Page'
-  });
+  res.render('02User/character_category_edit', {});
 });
 
-//router address: /user/add/character_class
-//descriptions: Show Character_Class Register Form
-//comments: Input Necessary Character_Class Info
-// router.get('/add/character_class', (req, res, next) => {
-//   res.render('02User/character_class_add', {
-//     character_class: new Character_Class()
-//   });
-// });
+/* 
+Character Class Function Router Start Here
+*/
+
+//router address: /user/character_class
+//descriptions: Character_Class List
+//comments: Demo all Character_Class Info
+router.get('/character_class', (req, res, next) => {
+  res.render('02User/character_class_list');
+});
+
 router.get('/add/character_class', (req, res, next) => {
   res.render('02User/character_class_add', {
     // character_category: new Character_Class()
@@ -92,6 +111,13 @@ router.post('/add/character_class', async (req, res, next) => {
       error: 'Error in Creating Character_Class'
     });
   }
+});
+
+//router address: /user/edit/character_category
+//descriptions: Edit Character Category
+//comments:
+router.get('/edit/character_class', function(req, res, next) {
+  res.render('02User/character_class_edit', {});
 });
 
 module.exports = router;
