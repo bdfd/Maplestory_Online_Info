@@ -400,10 +400,28 @@ router.put('/character_job/:id/edit', async (req, res, next) => {
 
 
 
-Character Job Function Router Start Here
-
-
+Character Info Function Router Start Here
 
 */
+
+//router address: /user/character_job/new
+//descriptions: Show Character_Job Register Form
+//comments: Input Necessary Character_Jobs Info
+router.get('/character_job/new', async (req, res, next) => {
+  try {
+    let character_classes = await Character_Class.find({});
+    let character_categories = await Character_Category.find({});
+    let character_job = new Character_Job();
+    // console.log(categories)
+    res.render('02User/character_job_add', {
+      character_classes: character_classes,
+      character_categories: character_categories,
+      character_job: character_job
+    });
+  } catch (err) {
+    console.log('err during get /character_job/new' + err);
+    res.render('/user/dashboard');
+  }
+});
 
 module.exports = router;
