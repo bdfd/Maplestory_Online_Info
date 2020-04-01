@@ -3,6 +3,7 @@ var router = express.Router();
 
 const Character_Category = require('../models/Character_Category');
 const Character_Class = require('../models/Character_Class');
+const Character_Job = require('../models/Character_Job');
 // app.use('/user', userRouter);
 
 //router address: /user
@@ -48,9 +49,7 @@ router.get('/character_category', async (req, res, next) => {
 //descriptions: Show Character_Category Register Form
 //comments: Input Necessary Character_Category Info
 router.get('/character_category/new', (req, res, next) => {
-  res.render('02User/character_category_add', {
-    // character_category: new Character_Category()
-  });
+  res.render('02User/character_category_add');
 });
 
 //router address: /user/character_category/new
@@ -71,7 +70,7 @@ router.post('/character_category/new', async (req, res, next) => {
       'err during post /user/character_category/new create new character_category ' +
         err
     );
-    res.render('/user/character_category/new', {
+    res.render('/user/character_category', {
       character_category: character_category,
       error:
         'Error in post /user/character_category/new Creating Character_Category'
@@ -163,10 +162,11 @@ router.get('/character_class', async (req, res, next) => {
   }
 });
 
+//router address: /user/character_class/new
+//descriptions: Show Character_Class Register Form
+//comments: Input Necessary Character_Class Info
 router.get('/character_class/new', (req, res, next) => {
-  res.render('02User/character_class_add', {
-    // character_category: new Character_Class()
-  });
+  res.render('02User/character_class_add');
 });
 
 //router address: /user/character_class/new
@@ -181,7 +181,7 @@ router.post('/character_class/new', async (req, res, next) => {
   // console.log('character_class', character_class);
   try {
     await character_class.save();
-    res.redirect('/user/character_class/new');
+    res.redirect('/user/character_class');
   } catch (err) {
     console.log(
       'err during during post /user/character_class/new create new character_class ' +
@@ -262,5 +262,49 @@ Character Job Function Router Start Here
 
 
 */
+
+//router address: /user/character_job/new
+//descriptions: Show Character_Job Register Form
+//comments: Input Necessary Character_Jobs Info
+router.get('/character_job/new', async (req, res, next) => {
+  try {
+    let character_classes = await Character_Class.find({});
+    let character_categories = await Character_Category.find({});
+    let job = new Character_Job();
+    // console.log(categories)
+    res.render('02User/character_job_add', {
+      character_classes: character_classes,
+      character_categories: character_categories,
+      job: job
+    });
+  } catch (err) {
+    console.log('err during get /character_job/new' + err);
+    res.render('/user/dashboard');
+  }
+});
+
+//router address: /user/character_job/new
+//descriptions: Obtain New Chara_Job Info
+//comments: Save Into Online MongoDB Database
+router.post('/character_job/new', async (req, res, next) => {
+  console.log('req.body', req.body);
+  let character_job = new Character_Job({
+    Job_ID: req.body.ID,
+    Job_Name: req.body.Name,
+    Job_Character_Class: req.body.Class_Type,
+    Job_Character_Category: req.body.Category_Type
+  });
+  console.log('character_job', character_job);
+  try {
+    await character_job.save();
+    res.redirect('/user/character_job/new');
+  } catch (err) {
+    console.log(
+      'err during during post /user/character_job/new create new character_job ' +
+        err
+    );
+    res.redirect('/user/dashboard');
+  }
+});
 
 module.exports = router;

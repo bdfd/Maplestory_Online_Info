@@ -1,0 +1,45 @@
+<script>
+  document.title = 'Add Class Job';
+</script>
+
+<h3>
+  Add Character Job Info
+</h3>
+
+<form action="/user/character_job/new" method="post">
+  <div class="form-group">
+    <label for="ID">Job_ID</label>
+    <input type="text" class="form-control" name="ID" />
+  </div>
+  <div class="form-group">
+    <label for="Name">Job_Name</label>
+    <input type="text" class="form-control" name="Name" />
+  </div>
+  <div class="form-group">
+    <label for="Class_Type">Class_Type</label>
+    <select class="form-control" name="Class_Type">
+      <% character_classes.forEach(character_class => { %>
+      <option
+        label="<%= character_class.Class_Name %>"
+        value="<%= character_class.id %>"
+      >
+        <% }) %>
+      </option></select
+    >
+  </div>
+  <div class="form-group">
+    <label for="Class_Type">Category_Type</label>
+    <select class="form-control" name="Category_Type">
+      <% character_categories.forEach(character_category => { %>
+      <option
+        label="<%= character_category.Category_Name %>"
+        value="<%= character_category.id %>"
+      >
+        <% }) %>
+      </option></select
+    >
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <a href="/user/character_job"> Go Back To Character Job List</a>
+</form>

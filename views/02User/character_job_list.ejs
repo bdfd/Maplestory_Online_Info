@@ -1,0 +1,25 @@
+<script>
+    document.title = 'Character Class List';
+</script>
+
+<p>Character Class List</p>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Class_No</th>
+        <th scope="col">Class_Name</th>   
+        <th scope="col">View</th>    
+        <th scope="col">Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% for (var i = 0; i <character_class.length; i++) {%>
+        <tr>
+          <th scope="row"><%=character_class[i].Class_No%></th>
+          <td><%=character_class[i].Class_Name%></td>
+          <td><a href="/user/character_class/<%=character_class[i].id%>">View</a></td>
+          <td><a href="/user/character_class/<%=character_class[i].id%>/edit">Edit</a></td>   
+        </tr>
+    <% } %>
+    </tbody>
+</table>
