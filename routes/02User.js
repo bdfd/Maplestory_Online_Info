@@ -263,6 +263,21 @@ Character Job Function Router Start Here
 
 */
 
+// router address: /user/character_job
+// descriptions: Character_JobList
+// comments: Demo all Character_Job Info
+router.get('/character_job', async (req, res, next) => {
+  try {
+    let character_job = await Character_Job.find({});
+    res.render('02User/character_job_list', {
+      character_job: character_job
+    });
+    // console.log(character_job);
+  } catch (err) {
+    console.log('err during get /user/character_class ' + err);
+  }
+});
+
 //router address: /user/character_job/new
 //descriptions: Show Character_Job Register Form
 //comments: Input Necessary Character_Jobs Info

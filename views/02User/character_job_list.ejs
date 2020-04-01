@@ -1,24 +1,28 @@
 <script>
-    document.title = 'Character Class List';
+    document.title = 'Character Job List';
 </script>
 
-<p>Character Class List</p>
+<p>Character Job List</p>
 <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Class_No</th>
-        <th scope="col">Class_Name</th>   
+        <th scope="col">Job Id</th>
+        <th scope="col">Job Name</th>   
+        <th scope="col">Job Category</th>
+        <th scope="col">Job Class</th>  
         <th scope="col">View</th>    
         <th scope="col">Edit</th>
       </tr>
     </thead>
     <tbody>
-    <% for (var i = 0; i <character_class.length; i++) {%>
+    <% for (var i = 0; i <character_job.length; i++) {%>
         <tr>
-          <th scope="row"><%=character_class[i].Class_No%></th>
-          <td><%=character_class[i].Class_Name%></td>
-          <td><a href="/user/character_class/<%=character_class[i].id%>">View</a></td>
-          <td><a href="/user/character_class/<%=character_class[i].id%>/edit">Edit</a></td>   
+          <th scope="row"><%=character_job[i].Job_ID%></th>
+          <th scope="row"><%=character_job[i].Job_Name%></th>          
+          <th scope="row"><%=character_job[i].Job_ID%></th>          
+          <th scope="row"><%=character_job[i].Job_ID%></th>
+          <td><a href="/user/character_class/<%=character_job[i].id%>">View</a></td>
+          <td><a href="/user/character_class/<%=character_job[i].id%>/edit">Edit</a></td>   
         </tr>
     <% } %>
     </tbody>
