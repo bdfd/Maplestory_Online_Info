@@ -234,7 +234,6 @@ router.put('/character_class/:id/edit', async (req, res, next) => {
     (character_class.Class_No = req.body.Class_No),
       (character_class.Class_Name = req.body.Class_Name),
       await character_class.save();
-    console.log(character_class);
     res.redirect('/user/character_class');
   } catch (err) {
     if (character_class == null) {
@@ -269,8 +268,12 @@ Character Job Function Router Start Here
 router.get('/character_job', async (req, res, next) => {
   try {
     let character_job = await Character_Job.find({});
+    let character_class = await Character_Class.find({});
+    let character_category = await Character_Category.find({});
     res.render('02User/character_job_list', {
-      character_job: character_job
+      character_job: character_job,
+      character_class: character_class,
+      character_category: character_category
     });
     // console.log(character_job);
   } catch (err) {
@@ -285,12 +288,12 @@ router.get('/character_job/new', async (req, res, next) => {
   try {
     let character_classes = await Character_Class.find({});
     let character_categories = await Character_Category.find({});
-    let job = new Character_Job();
+    let character_job = new Character_Job();
     // console.log(categories)
     res.render('02User/character_job_add', {
       character_classes: character_classes,
       character_categories: character_categories,
-      job: job
+      character_job: character_job
     });
   } catch (err) {
     console.log('err during get /character_job/new' + err);
@@ -302,14 +305,14 @@ router.get('/character_job/new', async (req, res, next) => {
 //descriptions: Obtain New Chara_Job Info
 //comments: Save Into Online MongoDB Database
 router.post('/character_job/new', async (req, res, next) => {
-  console.log('req.body', req.body);
+  // console.log('req.body', req.body);
   let character_job = new Character_Job({
-    Job_ID: req.body.ID,
-    Job_Name: req.body.Name,
-    Job_Character_Class: req.body.Class_Type,
-    Job_Character_Category: req.body.Category_Type
+    ID: req.body.ID,
+    Name: req.body.Name,
+    Class: req.body.Class,
+    Category: req.body.Category
   });
-  console.log('character_job', character_job);
+  // console.log('character_job', character_job);
   try {
     await character_job.save();
     res.redirect('/user/character_job/new');
@@ -321,5 +324,86 @@ router.post('/character_job/new', async (req, res, next) => {
     res.redirect('/user/dashboard');
   }
 });
+
+//router address: /user/character_job/:id
+//descriptions: View Character job
+//comments:
+router.get('/character_job/:id', async (req, res, next) => {
+  try {
+    let character_job = await Character_Job.findById(req.params.id);
+    let character_class = await Character_Class.findById(character_job.Class);
+    let character_category = await Character_Category.findById(
+      character_job.Category
+    );
+    res.render('02User/character_job_detail', {
+      character_job: character_job,
+      character_class: character_class,
+      character_category: character_category
+    });
+  } catch (err) {
+    console.log('err during get /user/character_class/:id ' + err);
+    res.redirect('/user');
+  }
+});
+
+//router address /user/character_job/:id/edit
+//descriptions: Show Detail Character Job Revise Form
+//comments: Show detail information of a Character Job
+router.get('/character_job/:id/edit', async (req, res, next) => {
+  try {
+    let character_job = await Character_Job.findById(req.params.id);
+    let character_classes = await Character_Class.find({});
+    let character_categories = await Character_Category.find({});
+    res.render('02User/character_job_edit', {
+      character_job: character_job,
+      character_classes: character_classes,
+      character_categories: character_categories
+    });
+  } catch (err) {
+    console.log('err during get /user/character_job/:id/edit ' + err);
+    res.redirect('/user');
+  }
+});
+
+//router address /user/character_job/:id/edit
+//descriptions: Update Detail Character Job Information
+//comments: Change detail information of Character Job
+router.put('/character_job/:id/edit', async (req, res, next) => {
+  let character_job;
+  try {
+    character_job = await Character_Job.findById(req.params.id);
+    (character_job.ID = req.body.ID),
+      (character_job.Name = req.body.Name),
+      (character_job.Class = req.body.Class),
+      (character_job.Category = req.body.Category);
+    await character_job.save();
+    res.redirect('/user/character_job');
+  } catch (err) {
+    if (character_job == null) {
+      console.log(
+        'err during put /user/character_job/:id/edit can not find this Character Job on exist database' +
+          err
+      );
+      res.redirect('/user');
+    } else {
+      console.log(
+        'err during put /user/character_class/:id/edit update specific character job information ' +
+          err
+      );
+      res.redirect('/user');
+    }
+  }
+  console.log(req.body);
+});
+
+/* 
+
+
+
+Character Job Function Router Start Here
+
+
+
+*/
 
 module.exports = router;

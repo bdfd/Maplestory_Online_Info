@@ -17,7 +17,7 @@
   </div>
   <div class="form-group">
     <label for="Class_Type">Class_Type</label>
-    <select class="form-control" name="Class_Type">
+    <select class="form-control" name="Class">
       <% character_classes.forEach(character_class => { %>
       <option
         label="<%= character_class.Class_Name %>"
@@ -28,8 +28,8 @@
     >
   </div>
   <div class="form-group">
-    <label for="Class_Type">Category_Type</label>
-    <select class="form-control" name="Category_Type">
+    <label for="Category_Type">Category_Type</label>
+    <select class="form-control" name="Category">
       <% character_categories.forEach(character_category => { %>
       <option
         label="<%= character_category.Category_Name %>"

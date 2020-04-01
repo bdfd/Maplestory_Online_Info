@@ -3,27 +3,39 @@
 </script>
 
 <p>Character Job List</p>
+<a href="/user/dashboard">Go Back Dashboard</a><br>
+<a href="/user/character_job/new">Create New Job</a><br><br>
+
 <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Job Id</th>
-        <th scope="col">Job Name</th>   
-        <th scope="col">Job Category</th>
-        <th scope="col">Job Class</th>  
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>   
+        <th scope="col">Category</th>
+        <th scope="col">Class</th>  
         <th scope="col">View</th>    
         <th scope="col">Edit</th>
       </tr>
     </thead>
     <tbody>
-    <% for (var i = 0; i <character_job.length; i++) {%>
+    <% for (let i = 0; i <character_job.length; i++) {%>
         <tr>
-          <th scope="row"><%=character_job[i].Job_ID%></th>
-          <th scope="row"><%=character_job[i].Job_Name%></th>          
-          <th scope="row"><%=character_job[i].Job_ID%></th>          
-          <th scope="row"><%=character_job[i].Job_ID%></th>
-          <td><a href="/user/character_class/<%=character_job[i].id%>">View</a></td>
-          <td><a href="/user/character_class/<%=character_job[i].id%>/edit">Edit</a></td>   
+          <th scope="row"><%=character_job[i].ID%></th>
+          <th scope="row"><%=character_job[i].Name%></th>
+          <% for (let j = 0; j <character_class.length; j++) {%>
+            <%if (JSON. stringify(character_job[i].Class) ==JSON. stringify(character_class[j].id)){%>
+              <th scope="row"><%=character_class[j].Class_Name%></th>  
+            <% } %>    
+          <% } %>
+          <% for (let k = 0; k <character_category.length; k++) {%>
+            <%if (JSON. stringify(character_job[i].Category) == JSON. stringify(character_category[k].id)){%>            
+              <th scope="row"><%=character_category[k].Category_Name%></th>
+            <% } %>
+          <% } %> 
+          <td><a href="/user/character_job/<%=character_job[i].id%>">View</a></td>
+          <td><a href="/user/character_job/<%=character_job[i].id%>/edit">Edit</a></td>   
         </tr>
     <% } %>
     </tbody>
 </table>
+<br>

@@ -1,0 +1,29 @@
+<script>
+  document.title = 'Character Job Detail Page';
+</script>
+
+<p>
+  View Specific Character Job Information
+</p>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Class</th>
+      <th scope="col">Category</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%=character_job.ID%></th>
+      <td><%=character_job.Name%></td>
+      <td><%=character_class.Class_Name%></td>
+      <td><%=character_category.Category_Name%></td>
+      <td>
+        <a href="/user/character_job/<%=character_job.id%>/edit">Edit</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

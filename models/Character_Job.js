@@ -3,27 +3,27 @@ const Schema = mongoose.Schema;
 
 //Create Character_Job Schema
 const Character_JobSchema = new Schema({
-  Job_ID: {
+  ID: {
     type: Number,
     required: true,
     unique: true,
     min: 1,
     max: 100
   },
-  Job_Name: {
+  Name: {
     type: String,
     required: true,
-    maxlength: 20
+    maxlength: 30
   },
-  Job_Character_Category: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: 'Character_Category'
-  },
-  Job_Character_Class: {
+  Class: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: 'Character_Class'
+  },
+  Category: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Character_Category'
   }
 });
 
