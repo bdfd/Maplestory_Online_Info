@@ -20,6 +20,7 @@ const Character_InfoSchema = new Schema({
     min: 1,
     max: 250
   },
+  //Job Relate Category & Class
   Job: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
@@ -29,24 +30,27 @@ const Character_InfoSchema = new Schema({
     type: String,
     required: true
   },
-  // Class: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   required: true,
-  //   ref: 'Character_Class'
-  // },
-  // Category: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   required: true,
-  //   ref: 'Character_Category'
-  // },
-  Professional_Skill_1_type: { type: String },
-  Professional_Skill_1_level: { type: Number },
-  Professional_Skill_2_type: { type: String },
-  Professional_Skill_2_level: { type: Number },
-  Professional_Skill_3_type: { type: String },
-  Professional_Skill_3_level: { type: Number },
-  Professional_Skill_4_type: { type: String },
-  Professional_Skill_4_level: { type: Number },
+  //Professional_Skill Relate Type and Level
+  Professional_Skill_1: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Character_Professional_Skill'
+  },
+  Professional_Skill_2: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Character_Professional_Skill'
+  },
+  Professional_Skill_3: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Character_Professional_Skill'
+  },
+  Professional_Skill_4: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Character_Professional_Skill'
+  },
   Location: {
     type: String,
     required: true

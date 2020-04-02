@@ -4,6 +4,7 @@ var router = express.Router();
 const Character_Category = require('../models/Character_Category');
 const Character_Class = require('../models/Character_Class');
 const Character_Job = require('../models/Character_Job');
+const Character_Professional_Skill = require('../models/Character_Professional_Skill');
 const Character_Info = require('../models/Character_Info');
 // app.use('/user', userRouter);
 
@@ -395,6 +396,138 @@ router.put('/character_job/:id/edit', async (req, res, next) => {
     }
   }
   console.log(req.body);
+});
+
+/* 
+
+
+
+Character Professional Skill Function Router Start Here
+
+*/
+
+//router address: /user/character_professional_skill
+//descriptions: Character_Professional_Skill List
+//comments: Demo all Character_Professional_Skill Info
+router.get('/character_professional_skill', async (req, res, next) => {
+  try {
+    let character_professional_skill = await Character_Professional_Skill.find(
+      {}
+    );
+    res.render('02User/character_professional_skill_list', {
+      character_professional_skill: character_professional_skill
+    });
+    // console.log(character_professional_skill);
+  } catch (err) {
+    console.log('err during get /user/character_professional_skill ' + err);
+  }
+});
+
+//router address: /user/character_profession_skill/new
+//descriptions: Show Character_Profession_Skill Register Form
+//comments: Input Necessary Character_Professional_Skill
+router.get('/character_professional_skill/new', async (req, res, next) => {
+  try {
+    let character_professional_skill = new Character_Professional_Skill();
+    res.render('02User/character_professional_skill_add', {
+      character_professional_skill: character_professional_skill
+    });
+  } catch (err) {
+    console.log('err during get /character_professional_skill/new' + err);
+    res.render('/user/dashboard');
+  }
+});
+
+//router address: /user/character_professional_skill/new
+//descriptions: Obtain New Chara_Professional_Skill
+//comments: Save Into Online MongoDB Database
+router.post('/character_professional_skill/new', async (req, res, next) => {
+  // console.log('req.body', req.body);
+  let character_professional_skill = new Character_Professional_Skill({
+    ID: req.body.ID,
+    Type: req.body.Type,
+    Level: req.body.Level
+  });
+  // console.log('character_info', character_info);
+  try {
+    await character_professional_skill.save();
+    res.redirect('/user/character_professional_skill/new');
+  } catch (err) {
+    console.log(
+      'err during during post /user/character_info/new create new character information ' +
+        err
+    );
+    res.redirect('/user/dashboard');
+  }
+});
+
+//router address: /user/character_profession_skill/:id
+//descriptions: View Character Professional Skill
+//comments:
+router.get('/character_professional_skill/:id', async (req, res, next) => {
+  try {
+    let character_professional_skill = await Character_Professional_Skill.findById(
+      req.params.id
+    );
+    res.render('02User/character_professional_skill_detail', {
+      character_professional_skill: character_professional_skill
+    });
+    console.log(character_professional_skill);
+  } catch (err) {
+    console.log('err during get /user/character_professional_skill/:id ' + err);
+    res.redirect('/user');
+  }
+});
+
+// router address /user/character_professional_skill/:id/edit
+// descriptions: Show Detail Character Professional Skill Revise Form
+// comments: Show detail information of a Character Professional Skill
+router.get('/character_professional_skill/:id/edit', async (req, res, next) => {
+  try {
+    let character_professional_skill = await Character_Professional_Skill.findById(
+      req.params.id
+    );
+    res.render('02User/character_professional_skill_edit', {
+      character_professional_skill: character_professional_skill
+    });
+    // console.log(character_category);
+  } catch (err) {
+    console.log(
+      'err during get /user/character_professional_skill/:id/edit ' + err
+    );
+    res.redirect('/user');
+  }
+});
+
+//router address /user/character_professional_skill/:id/edit
+//descriptions: Update Detail Character Professional Skill Information
+//comments: Change detail information of Character Professional Skill
+router.put('/character_professional_skill/:id/edit', async (req, res, next) => {
+  let character_professional_skill;
+  try {
+    character_professional_skill = await Character_Professional_Skill.findById(
+      req.params.id
+    );
+    (character_professional_skill.ID = req.body.ID),
+      (character_professional_skill.Type = req.body.Type),
+      (character_professional_skill.Level = req.body.Level),
+      await character_professional_skill.save();
+    res.redirect('/user/character_professional_skill');
+  } catch (err) {
+    if (character_professional_skill == null) {
+      console.log(
+        'err during put /user/character_professional_skill/:id/edit can not find this Character Category on exist database' +
+          err
+      );
+      res.redirect('/user');
+    } else {
+      console.log(
+        'err during put /user/character_professional_skill/:id/edit update specific character category information ' +
+          err
+      );
+      res.redirect('/user');
+    }
+  }
 });
 
 /* 

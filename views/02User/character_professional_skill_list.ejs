@@ -1,0 +1,30 @@
+<script>
+    document.title = 'Character Profession Skill List Page';
+</script>
+
+<p>Character Professional Skill List</p>
+<a href="/user/dashboard">Go Back Dashboard</a><br>
+<a href="/user/character_professional_skill/new">Create New Professional List</a><br><br>
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Type</th>   
+        <th scope="col">Level</th>   
+        <th scope="col">View</th>    
+        <th scope="col">Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% for (let i = 0; i <character_professional_skill.length; i++) {%>
+        <tr>
+          <th scope="row"><%=character_professional_skill[i].ID%></th>
+          <td><%=character_professional_skill[i].Type%></td>
+          <td><%=character_professional_skill[i].Level%></td>
+          <td><a href="/user/character_professional_skill/<%=character_professional_skill[i].id%>">View</a></td>
+          <td><a href="/user/character_professional_skill/<%=character_professional_skill[i].id%>/edit">Edit</a></td>   
+        </tr>
+    <% } %>
+    </tbody>
+</table>

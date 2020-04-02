@@ -1,0 +1,53 @@
+<script>
+  document.title = 'Character Professional Skill Edit Page';
+</script>
+<p>
+  edit character professional skill
+</p>
+
+<div>
+  <form
+    action="/user/character_professional_skill/<%=character_professional_skill.id%>/edit?_method=put"
+    method="post"
+  >
+    <div>
+      <label for="Class_No">ID : </label>
+      <input
+        type="text"
+        name="ID"
+        class="form-control"
+        placeholder="ID"
+        value="<%=character_professional_skill.ID%>"
+      />
+    </div>
+    <div>
+      <label for="Class_Name">Type : </label>
+      <input
+        type="text"
+        name="Type"
+        class="form-control"
+        placeholder="Type"
+        value="<%=character_professional_skill.Type%>"
+      />
+    </div>
+    <div>
+      <label for="Class_Name">Level : </label>
+      <input
+        type="text"
+        name="Level"
+        class="form-control"
+        placeholder="Level"
+        value="<%=character_professional_skill.Level%>"
+      />
+    </div>
+    <a
+      href="/user/character_professional_skill/<%=character_professional_skill.id%>"
+    >
+      Go Back To Character Professional Skill Detail</a
+    ><br />
+    <a href="/user/character_professional_skill">
+      Go Back To Character Profession Skill List</a
+    ><br />
+    <button type="submit">Update Character Class</button>
+  </form>
+</div>
