@@ -13,6 +13,7 @@ const Character_ClassSchema = new Schema({
   Class_Name: {
     type: String,
     required: true,
+    unique: true,
     maxlength: 20
   }
 });

@@ -19,7 +19,6 @@ const Character_Professional_Skill_Schema = new Schema({
     type: Number,
     required: true,
     required: true,
-    unique: true,
     min: 0,
     max: 10
   }

@@ -6,12 +6,14 @@ const Character_InfoSchema = new Schema({
   ID: {
     type: Number,
     required: true,
+    unique: true,
     min: 1,
     max: 100
   },
   Name: {
     type: String,
     required: true,
+    unique: true,
     maxlength: 30
   },
   Level: {

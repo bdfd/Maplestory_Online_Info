@@ -13,6 +13,7 @@ const Character_CategorySchema = new Schema({
   Category_Name: {
     type: String,
     required: true,
+    unique: true,
     maxlength: 20
   }
 });

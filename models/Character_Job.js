@@ -13,6 +13,7 @@ const Character_JobSchema = new Schema({
   Name: {
     type: String,
     required: true,
+    unique: true,
     maxlength: 30
   },
   Class: {

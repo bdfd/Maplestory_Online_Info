@@ -43,105 +43,61 @@
   </div>
 
   <div class="form-group">
-    <label for="Professional_Skill_1">Professional_Skill_1 :</label>
-    <select class="form-control" name="Pro_Skill_1_Type">
-      <option value="Smithing">None</option>
-      <option value="Smithing">Smithing</option>
-      <option value="Alchemy">Alchemy</option>
-      <option value="Accessory Crafting">Accessory Crafting</option>
-      <option value="Herbalist">Herbalist</option>
-      <option value="Miner">Miner</option>
-    </select>
-    <select class="form-control" name="Pro_Skill_1_Level">
-      <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-      <option value="11">11</option>
-    </select>
+    <label for="Professional_Skill_1">Professional_Skill_1</label>
+    <select class="form-control" name="Professional_Skill_1">
+      <% character_professional_skills.forEach(character_professional_skill => {
+      %>
+      <option
+        label="<%= character_professional_skill.Type %>.Level-<%= character_professional_skill.Level %>"
+        value="<%= character_professional_skill.id %>"
+      >
+        <% }) %>
+      </option></select
+    >
   </div>
+
   <div class="form-group">
-    <label for="Professional_Skill_2">Professional_Skill_2 :</label>
-    <select class="form-control" name="Pro_Skill_2_Type">
-      <option value="Smithing">None</option>
-      <option value="Smithing">Smithing</option>
-      <option value="Alchemy">Alchemy</option>
-      <option value="Accessory Crafting">Accessory Crafting</option>
-      <option value="Herbalist">Herbalist</option>
-      <option value="Miner">Miner</option>
-    </select>
-    <select class="form-control" name="Pro_Skill_2_Level">
-      <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-      <option value="11">11</option>
-    </select>
+    <label for="Professional_Skill_2">Professional_Skill_2</label>
+    <select class="form-control" name="Professional_Skill_2">
+      <% character_professional_skills.forEach(character_professional_skill => {
+      %>
+      <option
+        label="<%= character_professional_skill.Type %>.Level-<%= character_professional_skill.Level %>"
+        value="<%= character_professional_skill.id %>"
+      >
+        <% }) %>
+      </option></select
+    >
   </div>
+
   <div class="form-group">
-    <label for="Professional_Skill_3">Professional_Skill_3 :</label>
-    <select class="form-control" name="Pro_Skill_3_Type">
-      <option value="Smithing">None</option>
-      <option value="Smithing">Smithing</option>
-      <option value="Alchemy">Alchemy</option>
-      <option value="Accessory Crafting">Accessory Crafting</option>
-      <option value="Herbalist">Herbalist</option>
-      <option value="Miner">Miner</option>
-    </select>
-    <select class="form-control" name="Pro_Skill_3_Level">
-      <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-      <option value="11">11</option>
-    </select>
+    <label for="Professional_Skill_3">Professional_Skill_3</label>
+    <select class="form-control" name="Professional_Skill_3">
+      <% character_professional_skills.forEach(character_professional_skill => {
+      %>
+      <option
+        label="<%= character_professional_skill.Type %>.Level-<%= character_professional_skill.Level %>"
+        value="<%= character_professional_skill.id %>"
+      >
+        <% }) %>
+      </option></select
+    >
   </div>
+
   <div class="form-group">
-    <label for="Professional_Skill_4">Professional_Skill_4 :</label>
-    <select class="form-control" name="Pro_Skill_4_Type">
-      <option value="Smithing">None</option>
-      <option value="Smithing">Smithing</option>
-      <option value="Alchemy">Alchemy</option>
-      <option value="Accessory Crafting">Accessory Crafting</option>
-      <option value="Herbalist">Herbalist</option>
-      <option value="Miner">Miner</option>
-    </select>
-    <select class="form-control" name="Pro_Skill_4_Level">
-      <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-      <option value="11">11</option>
-    </select>
+    <label for="Professional_Skill_4">Professional_Skill_4</label>
+    <select class="form-control" name="Professional_Skill_4">
+      <% character_professional_skills.forEach(character_professional_skill => {
+      %>
+      <option
+        label="<%= character_professional_skill.Type %>.Level-<%= character_professional_skill.Level %>"
+        value="<%= character_professional_skill.id %>"
+      >
+        <% }) %>
+      </option></select
+    >
   </div>
+
   <div class="form-group">
     <label for="Location">Location :</label>
     <select class="form-control" name="Location">

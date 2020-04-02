@@ -544,11 +544,15 @@ router.get('/character_info', async (req, res, next) => {
     let character_job = await Character_Job.find({});
     let character_class = await Character_Class.find({});
     let character_category = await Character_Category.find({});
+    let character_professional_skill = await Character_Professional_Skill.find(
+      {}
+    );
     res.render('02User/character_info_list', {
       character_info: character_info,
       character_job: character_job,
       character_class: character_class,
-      character_category: character_category
+      character_category: character_category,
+      character_professional_skill: character_professional_skill
     });
     // console.log(character_info);
   } catch (err) {
@@ -563,9 +567,13 @@ router.get('/character_info', async (req, res, next) => {
 router.get('/character_info/new', async (req, res, next) => {
   try {
     let character_jobs = await Character_Job.find({});
+    let character_professional_skills = await Character_Professional_Skill.find(
+      {}
+    );
     let character_info = new Character_Info();
     res.render('02User/character_info_add', {
       character_jobs: character_jobs,
+      character_professional_skills: character_professional_skills,
       info: character_info
     });
   } catch (err) {
@@ -585,14 +593,10 @@ router.post('/character_info/new', async (req, res, next) => {
     Level: req.body.Level,
     Job: req.body.Job,
     Target_Usage: req.body.Target_Usage,
-    Professional_Skill_1_type: req.body.Pro_Skill_1_Type,
-    Professional_Skill_1_level: req.body.Pro_Skill_1_Level,
-    Professional_Skill_2_type: req.body.Pro_Skill_2_Type,
-    Professional_Skill_2_level: req.body.Pro_Skill_2_Level,
-    Professional_Skill_3_type: req.body.Pro_Skill_3_Type,
-    Professional_Skill_3_level: req.body.Pro_Skill_3_Level,
-    Professional_Skill_4_type: req.body.Pro_Skill_4_Type,
-    Professional_Skill_4_level: req.body.Pro_Skill_4_Level,
+    Professional_Skill_1: req.body.Professional_Skill_1,
+    Professional_Skill_2: req.body.Professional_Skill_2,
+    Professional_Skill_3: req.body.Professional_Skill_3,
+    Professional_Skill_4: req.body.Professional_Skill_4,
     Location: req.body.Location,
     Equip_Slot: req.body.Equipment_Slot,
     Use_Slot: req.body.Use_Slot,
