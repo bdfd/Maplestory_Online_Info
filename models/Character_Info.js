@@ -20,41 +20,36 @@ const Character_InfoSchema = new Schema({
     min: 1,
     max: 250
   },
-  Target_Usage: {
-    type: String,
-    required: true
-  },
   Job: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: 'Character_Job'
   },
-  Class: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: 'Character_Class'
+  Target_Usage: {
+    type: String,
+    required: true
   },
-  Category: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: 'Character_Category'
-  },
-  Special_Skill_1: {
-    type: String
-  },
-  Special_Skill_2: {
-    type: String
-  },
-  Special_Skill_3: {
-    type: String
-  },
-  Special_Skill_4: {
-    type: String
-  },
+  // Class: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   required: true,
+  //   ref: 'Character_Class'
+  // },
+  // Category: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   required: true,
+  //   ref: 'Character_Category'
+  // },
+  Professional_Skill_1_type: { type: String },
+  Professional_Skill_1_level: { type: Number },
+  Professional_Skill_2_type: { type: String },
+  Professional_Skill_2_level: { type: Number },
+  Professional_Skill_3_type: { type: String },
+  Professional_Skill_3_level: { type: Number },
+  Professional_Skill_4_type: { type: String },
+  Professional_Skill_4_level: { type: Number },
   Location: {
     type: String,
-    required: true,
-    ref: 'Location'
+    required: true
   },
   Equip_Slot: {
     type: String
@@ -68,13 +63,13 @@ const Character_InfoSchema = new Schema({
   Setup_Slot: {
     type: String
   },
-  Untradable_Item: {
+  Tradable_Item: {
     type: String
   },
   Movable_Item: {
     type: String
   },
-  Tradable_Item: {
+  Untradable_Item: {
     type: String
   },
   Special_Note: {

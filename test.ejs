@@ -1,0 +1,75 @@
+<!-- To Do List -->
+<p>1. Add Delete Function</p>
+<p>2. Add Character_Info Schema</p>
+<p>3. Add Equipment_Info Schema</p>
+<p>4. Add Equipment_Rarity Schema</p>
+<p>5. Add Item_Category Schema</p>
+<p>6. Add Item_Info Schema</p>
+<p>7. Think More Tomorrow</p>
+<p>8. Then Start Perform Page UI</p>
+
+<p>Character Job List</p>
+<a href="/user/dashboard">Go Back Dashboard</a><br />
+<a href="/user/character_job/new">Create New Job</a><br /><br />
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Level</th>
+      <th scope="col">Job</th>
+      <th scope="col">Target Usage</th>
+      <th scope="col">Location</th>
+      <th scope="col">Equipment Slot</th>
+      <th scope="col">Use Slot</th>
+      <th scope="col">Etc Slot</th>
+      <th scope="col">Set Up Slot</th>
+      <th scope="col">Tradable Item</th>
+      <th scope="col">Movable Item</th>
+      <th scope="col">Untradable Item</th>
+      <th scope="col">Special Note</th>
+      <th scope="col">Skill_1</th>
+      <th scope="col">Skill_2</th>
+      <th scope="col">Skill_3</th>
+      <th scope="col">Skill_4</th>
+      <th scope="col">View</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td scope="row"><%=character_info[i].ID%></td>
+      <th scope="row"><%=character_info[i].ID%></th>
+      <th scope="row"><%=character_info[i].ID%></th>
+      <th scope="row"><%=character_info[i].ID%></th>
+      <td scope="row"><%=character_info[i].ID%></td>
+      <th scope="row"><%=character_info[i].ID%></th>
+      <th scope="row"><%=character_info[i].ID%></th>
+      <th scope="row"><%=character_info[i].ID%></th>
+      <td scope="row"><%=character_info[i].ID%></td>
+      <th scope="row"><%=character_info[i].ID%></th>
+      <th scope="row"><%=character_info[i].ID%></th>
+      <th scope="row"><%=character_info[i].ID%></th>
+      <td scope="row"><%=character_info[i].ID%></td>
+      <th scope="row"><%=character_info[i].ID%></th>
+      <th scope="row"><%=character_info[i].ID%></th>
+      <th scope="row"><%=character_info[i].ID%></th>
+      <th scope="row"><%=character_info[i].ID%></th>
+      <th scope="row"><%=character_info[i].ID%></th>
+      <td><a href="/user/character_info/<%=character_info[i].id%>">View</a></td>
+      <td>
+        <a href="/user/character_info/<%=character_info[i].id%>/edit">Edit</a>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+<br />
+
+<% for (let i = 0; i
+<character_info.length; i++) {%>
+  <div><%=character_info[i].Job%></div>
+  <div><%=JSON. stringify(character_info[i].Job)%></div>
+  <div><%=typeof (JSON. stringify(character_info[i].Job))%></div>
+  <% } %>
+</character_info.length;>

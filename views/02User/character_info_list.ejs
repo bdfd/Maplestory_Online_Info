@@ -1,0 +1,105 @@
+<script>
+  document.title = 'Character Job List Page';
+</script>
+
+<p>Character Info List</p>
+<a href="/user/dashboard">Go Back Dashboard</a><br />
+<a href="/user/character_info/new">Create Info Job</a><br /><br />
+<p>Character Job List</p>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Level</th>
+      <th scope="col">Job</th>
+      <th scope="col">Class</th>
+      <th scope="col">Category</th>
+      <th scope="col">Target Usage</th>
+      <th scope="col">Location</th>
+      <th scope="col">Professional Skill Name</th>
+      <th scope="col">Professional Skill Level</th>
+      <th scope="col">Professional Skill Name</th>
+      <th scope="col">Professional Skill Level</th>
+      <th scope="col">Professional Skill Name</th>
+      <th scope="col">Professional Skill Level</th>
+      <th scope="col">Professional Skill Name</th>
+      <th scope="col">Professional Skill Level</th>
+      <th scope="col">Equip Slot</th>
+      <th scope="col">Use Slot</th>
+      <th scope="col">Etc Slot</th>
+      <th scope="col">Set Slot</th>
+      <th scope="col">Tra_Item</th>
+      <th scope="col">Mov_Item</th>
+      <th scope="col">Untra_Item</th>
+      <th scope="col">Special Note</th>
+      <th scope="col">View</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% for (let i = 0; i <character_info.length; i++) {%>
+    <tr>
+      <th scope="row"><%=character_info[i].ID%></th>
+      <td scope="row"><%=character_info[i].Name%></td>
+      <td scope="row"><%=character_info[i].Level%></td>
+      <% for (let j = 0; j <character_job.length; j++) {%>
+        <%if (JSON. stringify(character_info[i].Job) == JSON. stringify(character_job[j].id)) {%>
+          <td><%=character_job[j].Name%></td>
+          <% for (let k = 0; k <character_class.length; k++) {%>
+            <%if (JSON. stringify(character_job[j].Class) == JSON. stringify(character_class[k].id)) {%>
+            <td><%=character_class[k].Class_Name%></td>
+            <% } %> 
+          <% } %> 
+          <% for (let l = 0; l <character_category.length; l++) {%>
+            <%if (JSON. stringify(character_job[j].Category) == JSON. stringify(character_category[l].id)) {%>
+            <td><%=character_category[l].Category_Name%></td>
+            <% } %>
+          <% } %> 
+        <% } %>
+      <% } %>
+      <td scope="row"><%=character_info[i].Target_Usage%></td>
+      <td scope="row"><%=character_info[i].Location%></td>
+      <td scope="row"><%=character_info[i].Professional_Skill_1_type%></td>
+      <td scope="row"><%=character_info[i].Professional_Skill_1_level%></td>
+      <td scope="row"><%=character_info[i].Professional_Skill_2_type%></td>
+      <td scope="row"><%=character_info[i].Professional_Skill_2_level%></td>
+      <td scope="row"><%=character_info[i].Professional_Skill_3_type%></td>
+      <td scope="row"><%=character_info[i].Professional_Skill_3_level%></td>
+      <td scope="row"><%=character_info[i].Professional_Skill_4_type%></td>
+      <td scope="row"><%=character_info[i].Professional_Skill_4_level%></td>
+      <td scope="row"><%=character_info[i].Equip_Slot%></td>
+      <td scope="row"><%=character_info[i].Use_Slot%></td>
+      <td scope="row"><%=character_info[i].Etc_Slot%></td>
+      <td scope="row"><%=character_info[i].Setup_Slot%></td>
+      <td scope="row"><%=character_info[i].Tradable_Item%></td>
+      <td scope="row"><%=character_info[i].Movable_Item%></td>
+      <td scope="row"><%=character_info[i].Untradable_Item%></td>
+      <td scope="row"><%=character_info[i].Special_Note%></td>
+      <td scope="row"><a href="/user/character_info/<%=character_info[i].id%>">View</a></td>
+      <td scope="row"><a href="/user/character_info/<%=character_info[i].id%>/edit">Edit</a></td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+<br />
+
+
+
+<!-- <% for (let i = 0; i <character_info.length; i++) {%>
+  <% for (let j = 0; j <character_job.length; j++) {%>
+    <%if (JSON. stringify(character_info[i].Job) == JSON. stringify(character_job[j].id)) {%>
+      <div><%=character_job[j].Name%></div>
+      <% for (let k = 0; k <character_class.length; k++) {%>
+        <%if (JSON. stringify(character_job[j].Class) == JSON. stringify(character_class[k].id)) {%>
+        <div><%=character_class[k].Class_Name%></div>
+        <% } %> 
+      <% } %> 
+      <% for (let l = 0; l <character_category.length; l++) {%>
+        <%if (JSON. stringify(character_job[j].Category) == JSON. stringify(character_category[l].id)) {%>
+        <div><%=character_category[l].Category_Name%></div>
+        <% } %>
+      <% } %> 
+    <% } %>
+  <% } %>
+<% } %>  -->

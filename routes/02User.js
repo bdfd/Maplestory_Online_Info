@@ -4,6 +4,7 @@ var router = express.Router();
 const Character_Category = require('../models/Character_Category');
 const Character_Class = require('../models/Character_Class');
 const Character_Job = require('../models/Character_Job');
+const Character_Info = require('../models/Character_Info');
 // app.use('/user', userRouter);
 
 //router address: /user
@@ -404,23 +405,81 @@ Character Info Function Router Start Here
 
 */
 
-//router address: /user/character_job/new
-//descriptions: Show Character_Job Register Form
-//comments: Input Necessary Character_Jobs Info
-router.get('/character_job/new', async (req, res, next) => {
+router.get('/character_info', async (req, res, next) => {
   try {
-    let character_classes = await Character_Class.find({});
-    let character_categories = await Character_Category.find({});
-    let character_job = new Character_Job();
-    // console.log(categories)
-    res.render('02User/character_job_add', {
-      character_classes: character_classes,
-      character_categories: character_categories,
-      character_job: character_job
+    let character_info = await Character_Info.find({});
+    let character_job = await Character_Job.find({});
+    let character_class = await Character_Class.find({});
+    let character_category = await Character_Category.find({});
+    res.render('02User/character_info_list', {
+      character_info: character_info,
+      character_job: character_job,
+      character_class: character_class,
+      character_category: character_category
+    });
+    // console.log(character_info);
+  } catch (err) {
+    console.log('err during get /user/character_info ' + err);
+    res.render('/user/dashboard');
+  }
+});
+
+//router address: /user/character_info/new
+//descriptions: Show Character_info Register Form
+//comments: Input Necessary Character_Info
+router.get('/character_info/new', async (req, res, next) => {
+  try {
+    let character_jobs = await Character_Job.find({});
+    let character_info = new Character_Info();
+    res.render('02User/character_info_add', {
+      character_jobs: character_jobs,
+      info: character_info
     });
   } catch (err) {
-    console.log('err during get /character_job/new' + err);
+    console.log('err during get /character_info/new' + err);
     res.render('/user/dashboard');
+  }
+});
+
+//router address: /user/character_info/new
+//descriptions: Obtain New Chara_Info
+//comments: Save Into Online MongoDB Database
+router.post('/character_info/new', async (req, res, next) => {
+  // console.log('req.body', req.body);
+  let character_info = new Character_Info({
+    ID: req.body.ID,
+    Name: req.body.Name,
+    Level: req.body.Level,
+    Job: req.body.Job,
+    Target_Usage: req.body.Target_Usage,
+    Professional_Skill_1_type: req.body.Pro_Skill_1_Type,
+    Professional_Skill_1_level: req.body.Pro_Skill_1_Level,
+    Professional_Skill_2_type: req.body.Pro_Skill_2_Type,
+    Professional_Skill_2_level: req.body.Pro_Skill_2_Level,
+    Professional_Skill_3_type: req.body.Pro_Skill_3_Type,
+    Professional_Skill_3_level: req.body.Pro_Skill_3_Level,
+    Professional_Skill_4_type: req.body.Pro_Skill_4_Type,
+    Professional_Skill_4_level: req.body.Pro_Skill_4_Level,
+    Location: req.body.Location,
+    Equip_Slot: req.body.Equipment_Slot,
+    Use_Slot: req.body.Use_Slot,
+    Etc_Slot: req.body.Etc_Slot,
+    Setup_Slot: req.body.Setup_Slot,
+    Tradable_Item: req.body.Tradable_Item,
+    Movable_Item: req.body.Movable_Item,
+    Untradable_Item: req.body.Untradable_Item,
+    Special_Note: req.body.Special_Note
+  });
+  // console.log('character_info', character_info);
+  try {
+    await character_info.save();
+    res.redirect('/user/character_info/new');
+  } catch (err) {
+    console.log(
+      'err during during post /user/character_info/new create new character information ' +
+        err
+    );
+    res.redirect('/user/dashboard');
   }
 });
 

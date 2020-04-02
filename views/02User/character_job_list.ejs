@@ -21,10 +21,10 @@
     <% for (let i = 0; i <character_job.length; i++) {%>
         <tr>
           <th scope="row"><%=character_job[i].ID%></th>
-          <th scope="row"><%=character_job[i].Name%></th>
+          <td scope="row"><%=character_job[i].Name%></td>
           <% for (let j = 0; j <character_class.length; j++) {%>
             <%if (JSON. stringify(character_job[i].Class) ==JSON. stringify(character_class[j].id)){%>
-              <th scope="row"><%=character_class[j].Class_Name%></th>  
+              <td scope="row"><%=character_class[j].Class_Name%></td>  
             <% } %>    
           <% } %>
           <% for (let k = 0; k <character_category.length; k++) {%>
