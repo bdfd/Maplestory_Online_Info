@@ -19,6 +19,7 @@ mongoose
 
 var indexRouter = require('./routes/01Index');
 var userRouter = require('./routes/02User');
+var userEquipRouter = require('./routes/02User_Equip');
 var charRouter = require('./routes/03Character');
 var equipRouter = require('./routes/04Equipment');
 var marketRouter = require('./routes/05Market_Trend');
@@ -46,6 +47,7 @@ app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
+app.use('/user/equipment', userEquipRouter);
 app.use('/character', charRouter);
 app.use('/equipment', equipRouter);
 app.use('/market', marketRouter);
