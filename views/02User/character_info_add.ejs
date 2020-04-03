@@ -8,24 +8,12 @@
 
 <form action="/user/character_info/new" method="post">
   <div class="form-group">
-    <label for="ID">Character_ID :</label>
-    <input type="text" class="form-control" name="ID" />
-  </div>
-  <div class="form-group">
-    <label for="Name">Character_Name :</label>
-    <input type="text" class="form-control" name="Name" />
-  </div>
-  <div class="form-group">
-    <label for="Level">Character_Level(1-250) :</label>
-    <input type="text" class="form-control" name="Level" />
-  </div>
-  <div class="form-group">
-    <label for="Job">Job</label>
-    <select class="form-control" name="Job">
-      <% character_jobs.forEach(character_job => { %>
+    <label for="Name">Name</label>
+    <select class="form-control" name="Name">
+      <% character_names.forEach(character_name => { %>
       <option
-        label="<%= character_job.ID %>.<%= character_job.Name %>"
-        value="<%= character_job.id %>"
+        label="<%= character_name.ID %>.<%= character_name.Name %>"
+        value="<%= character_name.id %>"
       >
         <% }) %>
       </option></select

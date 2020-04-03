@@ -3,84 +3,66 @@ const Schema = mongoose.Schema;
 
 //Create Character_Info Schema
 const Character_InfoSchema = new Schema({
-  ID: {
-    type: Number,
-    required: true,
-    unique: true,
-    min: 1,
-    max: 100
-  },
+  //Name-> includes: ID, Name, Level, Job
+  //Job-> includes: Category & Class
   Name: {
-    type: String,
-    required: true,
-    unique: true,
-    maxlength: 30
-  },
-  Level: {
-    type: Number,
-    required: true,
-    min: 1,
-    max: 250
-  },
-  //Job Relate Category & Class
-  Job: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'Character_Job'
+    ref: 'Character_Name',
   },
   Target_Usage: {
     type: String,
-    required: true
+    required: true,
   },
-  //Professional_Skill Relate Type and Level
+  //Professional_Skill-> includes: Type and Level
   Professional_Skill_1: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'Character_Professional_Skill'
+    ref: 'Character_Professional_Skill',
   },
   Professional_Skill_2: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'Character_Professional_Skill'
+    ref: 'Character_Professional_Skill',
   },
   Professional_Skill_3: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'Character_Professional_Skill'
+    ref: 'Character_Professional_Skill',
   },
   Professional_Skill_4: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'Character_Professional_Skill'
+    ref: 'Character_Professional_Skill',
   },
   Location: {
     type: String,
-    required: true
+    required: true,
   },
   Equip_Slot: {
-    type: String
+    type: String,
   },
   Use_Slot: {
-    type: String
+    type: String,
   },
   Etc_Slot: {
-    type: String
+    type: String,
   },
   Setup_Slot: {
-    type: String
+    type: String,
   },
   Tradable_Item: {
-    type: String
+    type: String,
   },
   Movable_Item: {
-    type: String
+    type: String,
   },
   Untradable_Item: {
-    type: String
+    type: String,
   },
   Special_Note: {
-    type: String
-  }
+    type: String,
+  },
 });
 
 const Character_Info = mongoose.model('Character_Info', Character_InfoSchema);

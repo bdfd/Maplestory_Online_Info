@@ -777,6 +777,7 @@ Character Info Function Router Start Here
 router.get('/character_info', async (req, res, next) => {
   try {
     let character_info = await Character_Info.find({});
+    let character_name = await Character_Name.find({});
     let character_job = await Character_Job.find({});
     let character_class = await Character_Class.find({});
     let character_category = await Character_Category.find({});
@@ -785,6 +786,7 @@ router.get('/character_info', async (req, res, next) => {
     );
     res.render('02User/character_info_list', {
       character_info: character_info,
+      character_name: character_name,
       character_job: character_job,
       character_class: character_class,
       character_category: character_category,
@@ -805,15 +807,15 @@ router.get('/character_info', async (req, res, next) => {
 //comments: Input Necessary Character_Info
 router.get('/character_info/new', async (req, res, next) => {
   try {
-    let character_jobs = await Character_Job.find({});
+    let character_names = await Character_Name.find({});
     let character_professional_skills = await Character_Professional_Skill.find(
       {}
     );
     let character_info = new Character_Info();
     res.render('02User/character_info_add', {
-      character_jobs: character_jobs,
+      character_names: character_names,
       character_professional_skills: character_professional_skills,
-      info: character_info,
+      character_info: character_info,
     });
   } catch (err) {
     console.log('err during get /character_info/new' + err);
@@ -830,10 +832,7 @@ router.get('/character_info/new', async (req, res, next) => {
 router.post('/character_info/new', async (req, res, next) => {
   // console.log('req.body', req.body);
   let character_info = new Character_Info({
-    ID: req.body.ID,
     Name: req.body.Name,
-    Level: req.body.Level,
-    Job: req.body.Job,
     Target_Usage: req.body.Target_Usage,
     Professional_Skill_1: req.body.Professional_Skill_1,
     Professional_Skill_2: req.body.Professional_Skill_2,
@@ -871,7 +870,11 @@ router.post('/character_info/new', async (req, res, next) => {
 router.get('/character_info/:id', async (req, res, next) => {
   try {
     let character_info = await Character_Info.findById(req.params.id);
-    let character_job = await Character_Job.findById(character_info.Job);
+    // console.log('character_info', character_info);
+    let character_name = await Character_Name.findById(character_info.Name);
+    // console.log('character_name', character_name);
+    let character_job = await Character_Job.findById(character_name.Job);
+    // console.log('character_job', character_job);
     let character_class = await Character_Class.findById(character_job.Class);
     let character_category = await Character_Category.findById(
       character_job.Category
@@ -891,6 +894,7 @@ router.get('/character_info/:id', async (req, res, next) => {
     // console.log('character_info', character_info);
     res.render('02User/character_info_detail', {
       character_info: character_info,
+      character_name: character_name,
       character_job: character_job,
       character_class: character_class,
       character_category: character_category,
@@ -914,11 +918,11 @@ router.get('/character_info/:id', async (req, res, next) => {
 router.get('/character_info/:id/edit', async (req, res, next) => {
   try {
     let character_info = await Character_Info.findById(req.params.id);
-    let character_jobs = await Character_Job.find({});
+    let character_names = await Character_Name.find({});
     let character_professional_skills = await Character_Professional_Skill.find(
       {}
     );
-    let job_default = await Character_Job.findById(character_info.Job);
+    let name_default = await Character_Name.findById(character_info.Name);
     //professional_skill_1_default = ps1
     let professional_skill_1_default = await Character_Professional_Skill.findById(
       character_info.Professional_Skill_1
@@ -934,9 +938,9 @@ router.get('/character_info/:id/edit', async (req, res, next) => {
     );
     res.render('02User/character_info_edit', {
       character_info: character_info,
-      character_jobs: character_jobs,
+      character_names: character_names,
       character_professional_skills: character_professional_skills,
-      job_default: job_default,
+      name_default: name_default,
       ps1_default: professional_skill_1_default,
       ps2_default: professional_skill_2_default,
       ps3_default: professional_skill_3_default,
@@ -957,10 +961,7 @@ router.get('/character_info/:id/edit', async (req, res, next) => {
 router.put('/character_info/:id/edit', async (req, res, next) => {
   try {
     let character_info = await Character_Info.findById(req.params.id);
-    (character_info.ID = req.body.ID),
-      (character_info.Name = req.body.Name),
-      (character_info.Level = req.body.Level),
-      (character_info.Job = req.body.Job),
+    (character_info.Name = req.body.Name),
       (character_info.Target_Usage = req.body.Target_Usage),
       (character_info.Location = req.body.Location),
       (character_info.Professional_Skill_1 = req.body.Professional_Skill_1),
