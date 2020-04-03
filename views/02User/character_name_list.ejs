@@ -1,0 +1,49 @@
+<script>
+    document.title = 'Character Name List Page';
+</script>
+
+<p>Character Name List</p>
+<a href="/user/dashboard">Go Back Dashboard</a><br>
+<a href="/user/character_name/new">Create New Name</a><br><br>
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>   
+        <th scope="col">Level</th>   
+        <th scope="col">Job</th>   
+        <th scope="col">Class</th>   
+        <th scope="col">Category</th>    
+        <th scope="col">View</th>    
+        <th scope="col">Edit</th>    
+      </tr>
+    </thead>
+    <tbody>
+    <% for (let i = 0; i <character_name.length; i++) {%>
+        <tr>
+          <th scope="row"><%=character_name[i].ID%></th>
+          <td><%=character_name[i].Name%></td>
+          <td><%=character_name[i].Level%></td>
+          <% for (let j = 0; j <character_job.length; j++) {%>
+            <%if (JSON. stringify(character_name[i].Job) == JSON. stringify(character_job[j].id)) {%>
+              <td><%=character_job[j].Name%></td>
+              <% for (let k = 0; k <character_class.length; k++) {%>
+                <%if (JSON. stringify(character_job[j].Class) == JSON. stringify(character_class[k].id)) {%>
+                <td><%=character_class[k].Class_Name%></td>
+                <% } %> 
+              <% } %> 
+              <% for (let l = 0; l <character_category.length; l++) {%>
+                <%if (JSON. stringify(character_job[j].Category) == JSON. stringify(character_category[l].id)) {%>
+                <td><%=character_category[l].Category_Name%></td>
+                <% } %>
+              <% } %> 
+            <% } %>
+          <% } %>
+          <td><a href="/user/character_name/<%=character_name[i].id%>">View</a></td>
+          <td><a href="/user/character_name/<%=character_name[i].id%>/edit">Edit</a></td>       
+        </tr>
+    <% } %>
+    </tbody>
+</table>
+

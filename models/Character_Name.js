@@ -19,9 +19,13 @@ const Character_NameSchema = new Schema({
   Level: {
     type: String,
     required: true,
-    unique: true,
     min: 1,
     max: 250
+  },
+  Job: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Character_Job'
   }
 });
 
