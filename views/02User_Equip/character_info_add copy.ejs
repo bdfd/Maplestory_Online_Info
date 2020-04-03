@@ -1,0 +1,229 @@
+<script>
+  document.title = 'Add Character Info Page';
+</script>
+
+<h3>
+  Add Character Individual Info
+</h3>
+
+<form action="/user/character_info/new" method="post">
+  <div class="form-group">
+    <label for="Name">Name</label>
+    <select class="form-control" name="Name">
+      <% character_names.forEach(character_name => { %>
+      <option
+        label="<%= character_name.ID %>.<%= character_name.Name %>"
+        value="<%= character_name.id %>"
+      >
+        <% }) %>
+      </option></select
+    >
+  </div>
+  <div class="form-group">
+    <label for="Target_Usage">Traget Usage</label>
+    <select class="form-control" name="Target_Usage">
+      <option value="On Level Training">On Level Training</option>
+      <option value="On Equipment Upgarding">On Equipment Upgarde</option>
+      <option value="Finished Target">Finished Target</option>
+      <option value="Storage Use">Storage Use</option>
+      <option value="Not Interested Currently">Not Interested Currently</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="Professional_Skill_1">Professional_Skill_1</label>
+    <select class="form-control" name="Professional_Skill_1">
+      <% character_professional_skills.forEach(character_professional_skill => {
+      %>
+      <option
+        label="<%= character_professional_skill.Type %>.Level-<%= character_professional_skill.Level %>"
+        value="<%= character_professional_skill.id %>"
+      >
+        <% }) %>
+      </option></select
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="Professional_Skill_2">Professional_Skill_2</label>
+    <select class="form-control" name="Professional_Skill_2">
+      <% character_professional_skills.forEach(character_professional_skill => {
+      %>
+      <option
+        label="<%= character_professional_skill.Type %>.Level-<%= character_professional_skill.Level %>"
+        value="<%= character_professional_skill.id %>"
+      >
+        <% }) %>
+      </option></select
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="Professional_Skill_3">Professional_Skill_3</label>
+    <select class="form-control" name="Professional_Skill_3">
+      <% character_professional_skills.forEach(character_professional_skill => {
+      %>
+      <option
+        label="<%= character_professional_skill.Type %>.Level-<%= character_professional_skill.Level %>"
+        value="<%= character_professional_skill.id %>"
+      >
+        <% }) %>
+      </option></select
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="Professional_Skill_4">Professional_Skill_4</label>
+    <select class="form-control" name="Professional_Skill_4">
+      <% character_professional_skills.forEach(character_professional_skill => {
+      %>
+      <option
+        label="<%= character_professional_skill.Type %>.Level-<%= character_professional_skill.Level %>"
+        value="<%= character_professional_skill.id %>"
+      >
+        <% }) %>
+      </option></select
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="Location">Location :</label>
+    <select class="form-control" name="Location">
+      <option value="Other-Training Ground">Other-Training Ground</option>
+      <option value="Maple Island">Maple Island</option>
+      <option value="Ereve">Ereve</option>
+      <option value="Victoria Island-Lith Harbor"
+        >Victoria Island-Lith Harbor</option
+      >
+      <option value="Victoria Island-Kerning City"
+        >Victoria Island-Kerning City</option
+      >
+      <option value="Victoria Island-Six Path Cross Way"
+        >Victoria Island-Six Path Cross Way</option
+      >
+      <option value="Victoria Island-Henesys">Victoria Island-Henesys</option>
+      <option value="Victoria Island-Perion">Victoria Island-Perion</option>
+      <!-- <option value="Victoria Island-Ellinel">Victoria Island-Ellinel</option> -->
+      <option value="Victoria Island-Ellinia">Victoria Island-Ellinia</option>
+      <option value="Victoria Island-Nautilus">Victoria Island-Nautilus</option>
+      <!-- <option value="Victoria Island-Kerning Square">Victoria Island-Elluel</option> -->
+      <option value="Victoria Island-Gold Beach"
+        >Victoria Island-Gold Beach</option
+      >
+      <option value="Victoria Island-Florina Beach"
+        >Victoria Island-Florina Beach</option
+      >
+      <option value="Aquarium">Aquarium</option>
+      <option value="Ludus Lake-Ludibrium">Ludus Lake-Ludibrium</option>
+      <option value="Ludus Lake-Ellin Forest">Ludus Lake-Ellin Forest</option>
+      <option value="Ludus Lake-Korean Folk Town"
+        >Ludus Lake-Korean Folk Town</option
+      >
+      <option value="Ludus Lake-Omega Sector">Ludus Lake-Omega Sector</option>
+      <option value="Nihal Desert-Ariant">Nihal Desert-Ariant</option>
+      <option value="Nihal Desert-Magatia">Nihal Desert-Magatia</option>
+      <option value="Mu Lung Garden-Mu Lung">Mu Lung Garden-Mu Lung</option>
+      <option value="Mu Lung Garden-Herb Town">Mu Lung Garden-Herb Town</option>
+      <option value="Minar Forest-Leafre">Minar Forest-Leafre</option>
+      <option value="Minar Forest-Kritias">Minar Forest-Kritias</option>
+      <option value="Masteria-New Leaf City">Masteria-New Leaf City</option>
+      <option value="Dawneil-Tynerum">Dawnveil-Tynerum</option>
+      <option value="Dawnveil-Commerci">Dawnveil-Commerci</option>
+      <option value="Dawnveil-Arboren">Dawnveil-Arboren</option>
+      <option value="Phntheon-Pantheon">Phntheon-Pantheon</option>
+      <option value="Phntheon-Reclamation HQ">Phntheon-Reclamation HQ</option>
+      <option value="Fox Point Village">Fox Point Village</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="Equipment_Slot">Equipment_Slot :</label>
+    <textarea
+      type="text"
+      rows="3"
+      name="Equipment_Slot"
+      class="form-control"
+      placeholder="Enter Your Equipment Slot Information"
+    >
+    </textarea>
+  </div>
+  <div class="form-group">
+    <label for="Use_Slot">Use_Slot :</label>
+    <textarea
+      type="text"
+      rows="3"
+      name="Use_Slot"
+      class="form-control"
+      placeholder="Enter Your Use Slot Information"
+    >
+    </textarea>
+  </div>
+  <div class="form-group">
+    <label for="Etc_Slot">Etc_Slot :</label>
+    <textarea
+      type="text"
+      rows="3"
+      name="Etc_Slot"
+      class="form-control"
+      placeholder="Enter Your Etc Slot Information"
+    >
+    </textarea>
+  </div>
+  <div class="form-group">
+    <label for="Setup_Slot">Setup_Slot :</label>
+    <textarea
+      type="text"
+      rows="3"
+      name="Setup_Slot"
+      class="form-control"
+      placeholder="Enter Your Setup Slot Information"
+    >
+    </textarea>
+  </div>
+  <div class="form-group">
+    <label for="Tradable_Item">Tradable_Item :</label>
+    <textarea
+      type="text"
+      rows="3"
+      name="Tradable_Item"
+      class="form-control"
+      placeholder="Enter Your Tradable_Item Information"
+    >
+    </textarea>
+  </div>
+  <div class="form-group">
+    <label for="Movable_Item">Movable_Item :</label>
+    <textarea
+      type="text"
+      rows="3"
+      name="Movable_Item"
+      class="form-control"
+      placeholder="Enter Your Movable_Item Information"
+    >
+    </textarea>
+  </div>
+  <div class="form-group">
+    <label for="Untradable_Item">Untradable_Item :</label>
+    <textarea
+      type="text"
+      rows="3"
+      name="Untradable_Item"
+      class="form-control"
+      placeholder="Enter Your Untradable_Item Information"
+    >
+    </textarea>
+  </div>
+  <div class="form-group">
+    <label for="Special_Note">Special_Note :</label>
+    <textarea
+      type="text"
+      rows="3"
+      name="Special_Note"
+      class="form-control"
+      placeholder="Enter Your Special_Note Information"
+    >
+    </textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button><br />
+  <a href="/user/character_info"> Go Back To Character Info List</a>
+</form>

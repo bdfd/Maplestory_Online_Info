@@ -1,0 +1,36 @@
+<script>
+  document.title = 'Equipment Potential List Page';
+</script>
+
+<p>Character Category List</p>
+<a href="/user/dashboard">Go Back Dashboard</a><br />
+<a href="/user/equipment/equipment_potential/new"
+  >Create New Equipment Potential</a
+><br /><br />
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Type</th>
+      <th scope="col">Number_Of_Line</th>
+      <th scope="col">Status</th>
+      <th scope="col">Symbol</th>
+      <th scope="col">View</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for (let i = 0; i <equipment_potential.length; i++) {%>
+        <tr>
+          <th scope="row"><%=equipment_potential[i].ID%></th>
+          <td scope="row"><%=equipment_potential[i].Name%></td>
+          <td scope="row"><%=equipment_potential[i].Number_Of_Line%></td>
+          <td scope="row"><%=equipment_potential[i].Status%></td>
+          <td scope="row"><%=equipment_potential[i].Symbol%></td>
+          <td scope="row"><a href="/user/equipment/equipment_potential/<%=equipment_potential[i].id%>">View</a></td>
+          <td scope="row"><a href="/user/equipment/equipment_potential/<%=equipment_potential[i].id%>/edit">Edit</a></td>       
+        </tr>
+    <% } %>
+  </tbody>
+</table>

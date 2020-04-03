@@ -1,0 +1,34 @@
+<script>
+  document.title = 'Equipment Potential Detail Page';
+</script>
+
+<p>
+  View Specific Equipment Potential Information
+</p>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Type</th>
+      <th scope="col">Number_Of_Line</th>
+      <th scope="col">Status</th>
+      <th scope="col">Symbol</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%=equipment_potential.ID%></th>
+      <td scope="row"><%=equipment_potential.Type%></td>
+      <td scope="row"><%=equipment_potential.Number_Of_Line%></td>
+      <td scope="row"><%=equipment_potential.Status%></td>
+      <td scope="row"><%=equipment_potential.Symbol%></td>
+      <td scope="row">
+        <a
+          href="/user/equipment/equipment_potential/<%=equipment_potential.id%>/edit"
+          >Edit</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>

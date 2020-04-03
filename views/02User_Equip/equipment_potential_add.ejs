@@ -1,0 +1,35 @@
+<script>
+  document.title = 'Add Equipment Potential Page';
+</script>
+
+<h3>
+  Add Equipment PotentialInfo
+</h3>
+
+<form action="/user/equipment/equipment_potential/new" method="post">
+  <div class="form-group">
+    <label>ID : </label>
+    <input type="text" class="form-control" name="ID" />
+  </div>
+  <div class="form-group">
+    <label>Type : </label>
+    <input type="text" class="form-control" name="Type" />
+  </div>
+
+  <div class="form-group">
+    <label>Number of Line : </label>
+    <input type="text" class="form-control" name="Number_Of_Line" />
+  </div>
+  <div class="form-group">
+    <label>Status : </label>
+    <input type="text" class="form-control" name="Status" />
+  </div>
+  <div class="form-group">
+    <label>Symbol : </label>
+    <input type="text" class="form-control" name="Symbol" />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button><br />
+  <a href="/user/equipment/equipment_potential">
+    Go Back To Equipment Potential List</a
+  >
+</form>
