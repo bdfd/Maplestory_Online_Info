@@ -1,0 +1,70 @@
+<script>
+  document.title = 'Character Info Detail Page';
+</script>
+
+<p>
+  View Specific Character Information
+</p>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Level</th>
+      <th scope="col">Job</th>
+      <th scope="col">Class</th>
+      <th scope="col">Category</th>
+      <th scope="col">Target Usage</th>
+      <th scope="col">Professsional Skill 1 Type</th>
+      <th scope="col">Professsional Skill 1 Level</th>
+      <th scope="col">Professsional Skill 2 Type</th>
+      <th scope="col">Professsional Skill 2 Level</th>
+      <th scope="col">Professsional Skill 3 Type</th>
+      <th scope="col">Professsional Skill 3 Level</th>
+      <th scope="col">Professsional Skill 4 Type</th>
+      <th scope="col">Professsional Skill 4 Level</th>
+      <th scope="col">Location</th>
+      <th scope="col">Equipment Slot</th>
+      <th scope="col">Use Slot</th>
+      <th scope="col">Etc Slot</th>
+      <th scope="col">Setup Slot</th>
+      <th scope="col">Tradable Item</th>
+      <th scope="col">Movable Item</th>
+      <th scope="col">Untradable Item</th>
+      <th scope="col">Special</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%=character_info.ID%></th>
+      <td><%=character_info.Name%></td>
+      <td><%=character_info.Level%></td>
+      <td><%=character_job.Name%></td>
+      <td><%=character_class.Class_Name%></td>
+      <td><%=character_category.Category_Name%></td>
+      <td><%=character_info.Target_Usage%></td>
+      <td><%=character_professional_skill_1.Type%></td>
+      <td><%=character_professional_skill_1.Level%></td>
+      <td><%=character_professional_skill_2.Type%></td>
+      <td><%=character_professional_skill_2.Level%></td>
+      <td><%=character_professional_skill_3.Type%></td>
+      <td><%=character_professional_skill_3.Level%></td>
+      <td><%=character_professional_skill_4.Type%></td>
+      <td><%=character_professional_skill_4.Level%></td>
+      <td><%=character_info.Location%></td>
+      <td><%=character_info.Equip_Slot%></td>
+      <td><%=character_info.Use_Slot%></td>
+      <td><%=character_info.Etc_Slot%></td>
+      <td><%=character_info.Setup_Slot%></td>
+      <td><%=character_info.Tradable_Item%></td>
+      <td><%=character_info.Movabl_Item%></td>
+      <td><%=character_info.Untradable_Item%></td>
+      <td><%=character_info.Special_Note%></td>
+      <td>
+        <a href="/user/character_info/<%=character_info.id%>/edit">Edit</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

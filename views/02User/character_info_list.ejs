@@ -17,14 +17,10 @@
       <th scope="col">Category</th>
       <th scope="col">Target Usage</th>
       <th scope="col">Location</th>
-      <th scope="col">Professional Skill Name</th>
-      <th scope="col">Professional Skill Level</th>
-      <th scope="col">Professional Skill Name</th>
-      <th scope="col">Professional Skill Level</th>
-      <th scope="col">Professional Skill Name</th>
-      <th scope="col">Professional Skill Level</th>
-      <th scope="col">Professional Skill Name</th>
-      <th scope="col">Professional Skill Level</th>
+      <th scope="col">Professional Skill -1</th>
+      <th scope="col">Professional Skill -2</th>
+      <th scope="col">Professional Skill -3</th>
+      <th scope="col">Professional Skill -4</th>
       <th scope="col">Equip Slot</th>
       <th scope="col">Use Slot</th>
       <th scope="col">Etc Slot</th>
@@ -60,14 +56,26 @@
       <% } %>
       <td scope="row"><%=character_info[i].Target_Usage%></td>
       <td scope="row"><%=character_info[i].Location%></td>
-      <td scope="row"><%=character_info[i].Professional_Skill_1_type%></td>
-      <td scope="row"><%=character_info[i].Professional_Skill_1_level%></td>
-      <td scope="row"><%=character_info[i].Professional_Skill_2_type%></td>
-      <td scope="row"><%=character_info[i].Professional_Skill_2_level%></td>
-      <td scope="row"><%=character_info[i].Professional_Skill_3_type%></td>
-      <td scope="row"><%=character_info[i].Professional_Skill_3_level%></td>
-      <td scope="row"><%=character_info[i].Professional_Skill_4_type%></td>
-      <td scope="row"><%=character_info[i].Professional_Skill_4_level%></td>
+      <% for (let m = 0; m <character_professional_skill.length; m++) {%>
+        <%if (JSON. stringify(character_info[i].Professional_Skill_1) == JSON. stringify(character_professional_skill[m].id)) {%>
+          <td><%=character_professional_skill[m].Type%>-<%=character_professional_skill[m].Level%></td>
+        <% } %> 
+      <% } %>
+      <% for (let n = 0; n <character_professional_skill.length; n++) {%>
+        <%if (JSON. stringify(character_info[i].Professional_Skill_2) == JSON. stringify(character_professional_skill[n].id)) {%>
+          <td><%=character_professional_skill[n].Type%>-<%=character_professional_skill[n].Level%></td>
+        <% } %> 
+      <% } %>
+      <% for (let o = 0; o <character_professional_skill.length; o++) {%>
+        <%if (JSON. stringify(character_info[i].Professional_Skill_3) == JSON. stringify(character_professional_skill[o].id)) {%>
+          <td><%=character_professional_skill[o].Type%>-<%=character_professional_skill[o].Level%></td>
+        <% } %> 
+      <% } %>
+      <% for (let p = 0; p <character_professional_skill.length; p++) {%>
+        <%if (JSON. stringify(character_info[i].Professional_Skill_4) == JSON. stringify(character_professional_skill[p].id)) {%>
+          <td><%=character_professional_skill[p].Type%>-<%=character_professional_skill[p].Level%></td>
+        <% } %> 
+      <% } %>
       <td scope="row"><%=character_info[i].Equip_Slot%></td>
       <td scope="row"><%=character_info[i].Use_Slot%></td>
       <td scope="row"><%=character_info[i].Etc_Slot%></td>

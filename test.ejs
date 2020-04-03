@@ -8,26 +8,27 @@
 <p>7. Think More Tomorrow</p>
 <p>8. Then Start Perform Page UI</p>
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Type</th>
-      <th scope="col">Level</th>
-      <th scope="col">Edit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row"><%=character_professional_skill.ID%></th>
-      <th scope="row"><%=character_professional_skill.Type%></th>
-      <td><%=character_professional_skill.Level%></td>
-      <td>
-        <a
-          href="/user/character_professional_skill/<%=character_professional_skill.id%>/edit"
-          >Edit</a
-        >
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="form-group">
+  <label for="Class">Class :</label>
+  <select class="form-control" name="Class">
+    <% character_classes.forEach(character_class => { %>
+    <option
+      label="<%= character_class.Class_Name %>"
+      value="<%= character_class.id %>"
+    >
+      <% }) %>
+    </option></select
+  >
+</div>
+<div class="form-group">
+  <label for="Category">Category :</label>
+  <select class="form-control" name="Category">
+    <% character_categories.forEach(character_category => { %>
+    <option
+      label="<%= character_category.Category_Name %>"
+      value="<%= character_category.id %>"
+    >
+      <% }) %>
+    </option></select
+  >
+</div>

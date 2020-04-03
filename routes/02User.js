@@ -356,10 +356,17 @@ router.get('/character_job/:id/edit', async (req, res, next) => {
     let character_job = await Character_Job.findById(req.params.id);
     let character_classes = await Character_Class.find({});
     let character_categories = await Character_Category.find({});
+    let class_default = await Character_Class.findById(character_job.Class);
+    let category_default = await Character_Category.findById(
+      character_job.Category
+    );
+
     res.render('02User/character_job_edit', {
       character_job: character_job,
       character_classes: character_classes,
-      character_categories: character_categories
+      character_categories: character_categories,
+      class_default: class_default,
+      category_default: category_default
     });
   } catch (err) {
     console.log('err during get /user/character_job/:id/edit ' + err);
@@ -395,7 +402,7 @@ router.put('/character_job/:id/edit', async (req, res, next) => {
       res.redirect('/user');
     }
   }
-  console.log(req.body);
+  // console.log(req.body);
 });
 
 /* 
@@ -617,6 +624,130 @@ router.post('/character_info/new', async (req, res, next) => {
         err
     );
     res.redirect('/user/dashboard');
+  }
+});
+
+//router address: /user/character_info/:id
+//descriptions: View Character Indidual Info
+//comments:
+router.get('/character_info/:id', async (req, res, next) => {
+  try {
+    let character_info = await Character_Info.findById(req.params.id);
+    let character_job = await Character_Job.findById(character_info.Job);
+    let character_class = await Character_Class.findById(character_job.Class);
+    let character_category = await Character_Category.findById(
+      character_job.Category
+    );
+    let character_professional_skill_1 = await Character_Professional_Skill.findById(
+      character_info.Professional_Skill_1
+    );
+    let character_professional_skill_2 = await Character_Professional_Skill.findById(
+      character_info.Professional_Skill_2
+    );
+    let character_professional_skill_3 = await Character_Professional_Skill.findById(
+      character_info.Professional_Skill_3
+    );
+    let character_professional_skill_4 = await Character_Professional_Skill.findById(
+      character_info.Professional_Skill_4
+    );
+    // console.log('character_info', character_info);
+    res.render('02User/character_info_detail', {
+      character_info: character_info,
+      character_job: character_job,
+      character_class: character_class,
+      character_category: character_category,
+      character_professional_skill_1: character_professional_skill_1,
+      character_professional_skill_2: character_professional_skill_2,
+      character_professional_skill_3: character_professional_skill_3,
+      character_professional_skill_4: character_professional_skill_4
+    });
+  } catch (err) {
+    console.log('err during get /user/character_info/:id ' + err);
+    res.redirect('/user');
+  }
+});
+
+// router address /user/character_info/:id/edit
+// descriptions: Show Detail Character Information Revise Form
+// comments: Show detail information of a Character Individual Information
+router.get('/character_info/:id/edit', async (req, res, next) => {
+  try {
+    let character_info = await Character_Info.findById(req.params.id);
+    let character_jobs = await Character_Job.find({});
+    let character_professional_skills = await Character_Professional_Skill.find(
+      {}
+    );
+    let job_default = await Character_Job.findById(character_info.Job);
+    //professional_skill_1_default = ps1
+    let professional_skill_1_default = await Character_Professional_Skill.findById(
+      character_info.Professional_Skill_1
+    );
+    let professional_skill_2_default = await Character_Professional_Skill.findById(
+      character_info.Professional_Skill_2
+    );
+    let professional_skill_3_default = await Character_Professional_Skill.findById(
+      character_info.Professional_Skill_3
+    );
+    let professional_skill_4_default = await Character_Professional_Skill.findById(
+      character_info.Professional_Skill_4
+    );
+    res.render('02User/character_info_edit', {
+      character_info: character_info,
+      character_jobs: character_jobs,
+      character_professional_skills: character_professional_skills,
+      job_default: job_default,
+      ps1_default: professional_skill_1_default,
+      ps2_default: professional_skill_2_default,
+      ps3_default: professional_skill_3_default,
+      ps4_default: professional_skill_4_default
+    });
+  } catch (err) {
+    console.log('err during get /user/character_info/:id/edit ' + err);
+    res.redirect('/user');
+  }
+});
+
+// router address /user/character_job/:id/edit
+// descriptions: Update Detail Character Job Information
+// comments: Change detail information of Character Job
+router.put('/character_info/:id/edit', async (req, res, next) => {
+  try {
+    let character_info = await Character_Info.findById(req.params.id);
+    (character_info.ID = req.body.ID),
+      (character_info.Name = req.body.Name),
+      (character_info.Level = req.body.Level),
+      (character_info.Job = req.body.Job),
+      (character_info.Target_Usage = req.body.Target_Usage),
+      (character_info.Location = req.body.Location),
+      (character_info.Professional_Skill_1 = req.body.Professional_Skill_1),
+      (character_info.Professional_Skill_2 = req.body.Professional_Skill_2),
+      (character_info.Professional_Skill_3 = req.body.Professional_Skill_3),
+      (character_info.Professional_Skill_4 = req.body.Professional_Skill_4),
+      (character_info.Equip_Slot = req.body.Equip_Slot),
+      (character_info.Use_Slot = req.body.Use_Slot),
+      (character_info.Etc_Slot = req.body.Etc_Slot),
+      (character_info.Setup_Slot = req.body.Setup_Slot),
+      (character_info.Tradable_Item = req.body.Tradable_Item),
+      (character_info.Movable_Item = req.body.Movable_Item),
+      (character_info.Untradable_Item = req.body.Untradable_Item),
+      (character_info.Special_Note = req.body.Special_Note),
+      console.log(character_info);
+    await character_info.save();
+    res.redirect('/user/character_info');
+  } catch (err) {
+    if (character_info == null) {
+      console.log(
+        'err during put /user/character_info/:id/edit can not find this Character Job on exist database' +
+          err
+      );
+      res.redirect('/user');
+    } else {
+      console.log(
+        'err during put /user/character_info/:id/edit update specific character job information ' +
+          err
+      );
+      res.redirect('/user');
+    }
   }
 });
 

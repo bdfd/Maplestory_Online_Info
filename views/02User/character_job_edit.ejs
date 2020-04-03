@@ -33,9 +33,12 @@
     <div class="form-group">
       <label for="Class">Class :</label>
       <select class="form-control" name="Class">
+        <option value="<%=class_default._id%>"
+          ><%=class_default.Class_Name%></option
+        >
         <% character_classes.forEach(character_class => { %>
         <option
-          label="<%= character_class.Class_Name %>"
+          label="<%= character_class.Class_No %>.<%= character_class.Class_Name %>"
           value="<%= character_class.id %>"
         >
           <% }) %>
@@ -45,9 +48,12 @@
     <div class="form-group">
       <label for="Category">Category :</label>
       <select class="form-control" name="Category">
+        <option value="<%=category_default.Category_Name%>"
+          ><%=category_default.Category_Name%></option
+        >
         <% character_categories.forEach(character_category => { %>
         <option
-          label="<%= character_category.Category_Name %>"
+          label="<%= character_category.Category_ID %>.<%= character_category.Category_Name %>"
           value="<%= character_category.id %>"
         >
           <% }) %>
@@ -61,3 +67,5 @@
     <button type="submit">Update Character Class</button>
   </form>
 </div>
+
+<br />
