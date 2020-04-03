@@ -751,4 +751,12 @@ router.put('/character_info/:id/edit', async (req, res, next) => {
   }
 });
 
+/* 
+
+
+
+Equipment Info Function Router Start Here
+
+*/
+
 module.exports = router;
