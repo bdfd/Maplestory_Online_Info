@@ -46,8 +46,7 @@ router.get('/character_category', async (req, res, next) => {
   } catch (err) {
     console.log('err during get /user/character_category ' + err);
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Creating Character_Category',
+      error: 'Error in get /user/character_category Show CharacterCategory',
     });
   }
 });
@@ -79,7 +78,7 @@ router.post('/character_category/new', async (req, res, next) => {
     );
     res.render('error', {
       error:
-        'Error in post /user/character_category/name Creating Character_Category',
+        'Error in post /character_category/new Create New Character Category',
     });
   }
 });
@@ -97,7 +96,7 @@ router.get('/character_category/:id', async (req, res, next) => {
     console.log('err during get /user/character_category/:id ' + err);
     res.render('error', {
       error:
-        'Error in post /user/character_category/name Creating Character_Category',
+        'Error in get /user/character_category/:id Demo Individual Character Category',
     });
   }
 });
@@ -116,7 +115,7 @@ router.get('/character_category/:id/edit', async (req, res, next) => {
     console.log('err during get /user/character_category/:id/edit ' + err);
     res.render('error', {
       error:
-        'Error in post /user/character_category/name Creating Character_Category',
+        'Error in get /user/character_category/:id/edit Edit Character Category',
     });
   }
 });
@@ -146,7 +145,7 @@ router.put('/character_category/:id/edit', async (req, res, next) => {
       );
       res.render('error', {
         error:
-          'Error in post /user/character_category/name Creating Character_Category',
+          'Error in put /user/character_category/:id/edit Update Character Category',
       });
     }
   }
@@ -175,8 +174,7 @@ router.get('/character_class', async (req, res, next) => {
   } catch (err) {
     console.log('err during get /user/character_class ' + err);
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Creating Character_Category',
+      error: 'Error in get /user/character_class Show Character Category',
     });
   }
 });
@@ -208,7 +206,7 @@ router.post('/character_class/new', async (req, res, next) => {
     );
     res.render('error', {
       error:
-        'Error in post /user/character_category/name Creating Character_Category',
+        'Error in post /user/character_category/name Create Character Category',
     });
   }
 });
@@ -226,7 +224,7 @@ router.get('/character_class/:id', async (req, res, next) => {
     console.log('err during get /user/character_class/:id ' + err);
     res.render('error', {
       error:
-        'Error in post /user/character_category/name Creating Character_Category',
+        'Error in post /user/character_category/name Demo Character Category',
     });
   }
 });
@@ -244,7 +242,7 @@ router.get('/character_class/:id/edit', async (req, res, next) => {
     console.log('err during get /user/character_class/:id/edit ' + err);
     res.render('error', {
       error:
-        'Error in post /user/character_category/name Creating Character_Category',
+        'Error in post /user/character_category/name Edit Character Category',
     });
   }
 });
@@ -274,7 +272,7 @@ router.put('/character_class/:id/edit', async (req, res, next) => {
       );
       res.render('error', {
         error:
-          'Error in post /user/character_category/name Creating Character_Category',
+          'Error in post /user/character_category/name Update Character_Category',
       });
     }
   }
@@ -308,7 +306,7 @@ router.get('/character_job', async (req, res, next) => {
     console.log('err during get /user/character_class ' + err);
     res.render('error', {
       error:
-        'Error in post /user/character_category/name Creating Character_Category',
+        'Error in post /user/character_category/name Show Character_Category',
     });
   }
 });
