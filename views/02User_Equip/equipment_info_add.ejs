@@ -1,0 +1,99 @@
+<script>
+  document.title = 'Add Character Info Page';
+</script>
+
+<h3>
+  Add Character Individual Info
+</h3>
+
+<form action="/user/equipment/equipment_info/new" method="post">
+  <div class="form-group">
+    <label for="Name">Name</label>
+    <select class="form-control" name="Name">
+      <% character_names.forEach(character_name => { %>
+      <option
+        label="<%= character_name.ID %>.<%= character_name.Name %>"
+        value="<%= character_name.id %>"
+      >
+        <% }) %>
+      </option></select
+    >
+  </div>
+  <div class="form-group">
+    <label>Head Name : </label>
+    <input type="text" class="form-control" name="Head_Name" />
+  </div>
+  <div class="form-group">
+    <label for="Head_Potential_Status">Head Potential Status : </label>
+    <select class="form-control" name="Head_Potential_Status">
+      <% equipment_potentails.forEach(equipment_potentail => { %>
+      <option
+        label="<%= equipment_potentail.Symbol %>"
+        value="<%= equipment_potentail.id %>"
+      >
+        <% }) %>
+      </option></select
+    >
+  </div>
+  <div class="form-group">
+    <label for="Head_BonusPotential_Status"
+      >Head Bonus Potential Status :
+    </label>
+    <select class="form-control" name="Head_BonusPotential_Status">
+      <% equipment_potentails.forEach(equipment_potentail => { %>
+      <option
+        label="<%= equipment_potentail.Symbol %>"
+        value="<%= equipment_potentail.id %>"
+      >
+        <% }) %>
+      </option></select
+    >
+  </div>
+  <div class="form-group">
+    <label for="Head_Status">Head Status</label>
+    <select class="form-control" name="Head_Status">
+      <option value="SWAP">SWAP</option>
+      <option value="OK">OK</option>
+      <option value="DONE">DONE</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Head_Potential_Line_1 : </label>
+    <input type="text" class="form-control" name="Head_Potential_Line_1" />
+  </div>
+  <div class="form-group">
+    <label>Head_Potential_Line_2 : </label>
+    <input type="text" class="form-control" name="Head_Potential_Line_2" />
+  </div>
+  <div class="form-group">
+    <label>Head_Potential_Line_3 : </label>
+    <input type="text" class="form-control" name="Head_Potential_Line_3" />
+  </div>
+  <div class="form-group">
+    <label>Head_BounusPotential_Line_1 : </label>
+    <input
+      type="text"
+      class="form-control"
+      name="Head_BounusPotential_Line_1"
+    />
+  </div>
+  <div class="form-group">
+    <label>Head_BounusPotential_Line_2 : </label>
+    <input
+      type="text"
+      class="form-control"
+      name="Head_BounusPotential_Line_2"
+    />
+  </div>
+  <div class="form-group">
+    <label>Head_BounusPotential_Line_3 : </label>
+    <input
+      type="text"
+      class="form-control"
+      name="Head_BounusPotential_Line_3"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button><br />
+  <a href="/user/equipment/equipment_info"> Go Back To Equipment Info List</a>
+</form>

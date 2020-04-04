@@ -1,0 +1,97 @@
+<script>
+  document.title = 'Character Job List Page';
+</script>
+
+<p>Character Info List</p>
+<a href="/user/dashboard">Go Back Dashboard</a><br />
+<a href="/user/character_info/new">Create New Info </a><br /><br />
+<p>Character Info List</p>
+<!-- <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Level</th>
+      <th scope="col">Job</th>
+      <th scope="col">Class</th>
+      <th scope="col">Category</th>
+      <th scope="col">Target Usage</th>
+      <th scope="col">Location</th>
+      <th scope="col">Professional Skill -1</th>
+      <th scope="col">Professional Skill -2</th>
+      <th scope="col">Professional Skill -3</th>
+      <th scope="col">Professional Skill -4</th>
+      <th scope="col">Equip Slot</th>
+      <th scope="col">Use Slot</th>
+      <th scope="col">Etc Slot</th>
+      <th scope="col">Set Slot</th>
+      <th scope="col">Tra_Item</th>
+      <th scope="col">Mov_Item</th>
+      <th scope="col">Untra_Item</th>
+      <th scope="col">Special Note</th>
+      <th scope="col">View</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% for (let i = 0; i <character_info.length; i++) {%>
+    <tr>
+      <% for (let j = 0; j <character_name.length; j++) {%>
+        <%if (JSON. stringify(character_info[i].Name) == JSON. stringify(character_name[j].id)) {%>
+          <th scope="row"><%=character_name[j].ID%></th>
+          <td scope="row"><%=character_name[j].Name%></td>
+          <td scope="row"><%=character_name[j].Level%></td>
+          <% for (let k = 0; k <character_job.length; k++) {%>
+            <%if (JSON. stringify(character_name[j].Job) == JSON. stringify(character_job[k].id)) {%>
+                <td scope="row"><%=character_job[k].Name%></td>
+                <% for (let l = 0; l <character_class.length; l++) {%>
+                  <%if (JSON. stringify(character_job[k].Class) == JSON. stringify(character_class[l].id)) {%>
+                  <td scope="row"><%=character_class[l].Class_Name%></td>
+                  <% } %> 
+                <% } %> 
+                <% for (let m = 0; m <character_category.length; m++) {%>
+                  <%if (JSON. stringify(character_job[k].Category) == JSON. stringify(character_category[m].id)) {%>
+                  <td scope="row"><%=character_category[m].Category_Name%></td>
+                  <% } %> 
+                <% } %> 
+            <% } %> 
+          <% } %> 
+        <% } %>
+      <% } %>
+      <td scope="row"><%=character_info[i].Target_Usage%></td>
+      <td scope="row"><%=character_info[i].Location%></td>
+      <% for (let m = 0; m <character_professional_skill.length; m++) {%>
+        <%if (JSON. stringify(character_info[i].Professional_Skill_1) == JSON. stringify(character_professional_skill[m].id)) {%>
+          <td scope="row"><%=character_professional_skill[m].Type%>-<%=character_professional_skill[m].Level%></td>
+        <% } %> 
+      <% } %>
+      <% for (let n = 0; n <character_professional_skill.length; n++) {%>
+        <%if (JSON. stringify(character_info[i].Professional_Skill_2) == JSON. stringify(character_professional_skill[n].id)) {%>
+          <td scope="row"><%=character_professional_skill[n].Type%>-<%=character_professional_skill[n].Level%></td>
+        <% } %> 
+      <% } %>
+      <% for (let o = 0; o <character_professional_skill.length; o++) {%>
+        <%if (JSON. stringify(character_info[i].Professional_Skill_3) == JSON. stringify(character_professional_skill[o].id)) {%>
+          <td scope="row"><%=character_professional_skill[o].Type%>-<%=character_professional_skill[o].Level%></td>
+        <% } %> 
+      <% } %>
+      <% for (let p = 0; p <character_professional_skill.length; p++) {%>
+        <%if (JSON. stringify(character_info[i].Professional_Skill_4) == JSON. stringify(character_professional_skill[p].id)) {%>
+          <td scope="row"><%=character_professional_skill[p].Type%>-<%=character_professional_skill[p].Level%></td>
+        <% } %> 
+      <% } %>
+      <td scope="row"><%=character_info[i].Equip_Slot%></td>
+      <td scope="row"><%=character_info[i].Use_Slot%></td>
+      <td scope="row"><%=character_info[i].Etc_Slot%></td>
+      <td scope="row"><%=character_info[i].Setup_Slot%></td>
+      <td scope="row"><%=character_info[i].Tradable_Item%></td>
+      <td scope="row"><%=character_info[i].Movable_Item%></td>
+      <td scope="row"><%=character_info[i].Untradable_Item%></td>
+      <td scope="row"><%=character_info[i].Special_Note%></td>
+      <td scope="row"><a href="/user/character_info/<%=character_info[i].id%>">View</a></td>
+      <td scope="row"><a href="/user/character_info/<%=character_info[i].id%>/edit">Edit</a></td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+<br /> -->

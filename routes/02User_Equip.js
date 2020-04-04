@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 const Equipment_Potential = require('../models/Equipment_Potential');
+const Equipment_Info = require('../models/Equipment_Info');
+const Character_Name = require('../models/Character_Name');
 // app.use('/user/equipment', userEquipRouter);
 
 /* 
@@ -44,7 +46,7 @@ router.get('/equipment_potential/new', (req, res, next) => {
 //descriptions: Obtain New Equipment_Potential Info
 //comments: Save Into Online MongoDB Database
 router.post('/equipment_potential/new', async (req, res, next) => {
-  console.log('req.body', req.body);
+  //   console.log('req.body', req.body);
   let equipment_potential = new Equipment_Potential({
     ID: req.body.ID,
     Type: req.body.Type,
@@ -144,11 +146,96 @@ router.put('/equipment_potential/:id/edit', async (req, res, next) => {
   }
 });
 
-// //router address: /user/equipment/potential
-// //descriptions: User Equipment List page
-// //comments:Equipment List Page
-// router.get('/potential', function(req, res, next) {
-//   res.render('02User_Equip/equipment_potential_new');
-// });
+/* 
+
+
+
+Character Info Function Router Start Here
+
+
+
+*/
+
+//router address: /user/equipment/equipment_info/
+//descriptions: Character Info List
+//comments: Demo all Character Information
+router.get('/equipment_info', async (req, res, next) => {
+  try {
+    let equipment_info = await Equipment_Info.find({});
+    let character_name = await Character_Name.find({});
+    let equipment_potential = await Equipment_Potential.find({});
+
+    res.render('02User_Equip/equipment_info_list', {
+      equipment_info: equipment_info,
+      character_name: character_name,
+      equipment_potential: equipment_potential,
+    });
+    // console.log(character_info);
+  } catch (err) {
+    console.log('err during get /user/equipment/equipment_info/ ' + err);
+    res.render('error', {
+      error:
+        'Error in get /user/equipment/equipment_info/ Creating Equipment_Info',
+    });
+  }
+});
+
+//router address: /user/equipment/equipment_info/new
+//descriptions: Show Equipment Info Register Form
+//comments: Input Necessary Equipment Information
+router.get('/equipment_info/new', async (req, res, next) => {
+  try {
+    let character_names = await Character_Name.find({});
+    let equipment_potentails = await Equipment_Potential.find({});
+    let equipment_info = new Equipment_Info();
+    res.render('02User_Equip/equipment_info_add', {
+      character_names: character_names,
+      equipment_potentails: equipment_potentails,
+      equipment_info: equipment_info,
+    });
+  } catch (err) {
+    console.log('err during get /user/equipment/equipment_info/new' + err);
+    res.render('error', {
+      error:
+        'Error in get /user/equipment/equipment_info/new Creating Equipment_Info',
+    });
+  }
+});
+
+//router address: /user/equipment/equipment_info/new
+//descriptions: Obtain New Equipment_Information
+//comments: Save Into Online MongoDB Database
+router.post('/equipment_info/new', async (req, res, next) => {
+  console.log('req.body', req.body);
+  let equipment_info = new Equipment_Info({
+    Name: req.body.Name,
+    Head_Name: req.body.Head_Name,
+    Head_Potential_Status: req.body.Head_Potential_Status,
+    Head_BonusPotential_Status: req.body.Head_BonusPotential_Status,
+    Head_Status: req.body.Head_Status,
+    Head_Descriptions: {
+      Potential_Line_1: req.body.Head_Potential_Line_1,
+      Potential_Line_2: req.body.Head_Potential_Line_2,
+      Potential_Line_3: req.body.Head_Potential_Line_3,
+      BounusPotential_Line_1: req.body.Head_BounusPotential_Line_1,
+      BounusPotential_Line_2: req.body.Head_BounusPotential_Line_2,
+      BounusPotential_Line_3: req.body.Head_BounusPotential_Line_3,
+    },
+  });
+  console.log('equipment_info ', equipment_info);
+  try {
+    await equipment_info.save();
+    res.redirect('/user/equipment/equipment_info/new');
+  } catch (err) {
+    console.log(
+      'err during post /user/equipment/equipment_info/new create new equipment info ' +
+        err
+    );
+    res.render('error', {
+      error:
+        'Error in post /user/equipment/equipment_info/new Creating Equipment Info Potential',
+    });
+  }
+});
 
 module.exports = router;

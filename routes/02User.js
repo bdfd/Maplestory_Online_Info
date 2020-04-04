@@ -774,6 +774,9 @@ Character Info Function Router Start Here
 
 */
 
+//router address: /user/character_info
+//descriptions: Character Info List
+//comments: Demo all Character Information
 router.get('/character_info', async (req, res, next) => {
   try {
     let character_info = await Character_Info.find({});
