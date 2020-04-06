@@ -1,13 +1,13 @@
 <script>
-  document.title = 'Individual Character Information Edit Page';
+  document.title = 'Individual Equipment Information Edit Head Page';
 </script>
 <p>
-  edit character information
+  edit equipment head information
 </p>
 
 <div>
   <form
-    action="/user/character_info/<%=character_info.id%>/edit?_method=put"
+    action="/user/equipment/equipment_info/<%=equipment_info.id%>/edit/head?_method=put"
     method="post"
   >
     <div class="form-group">
@@ -23,227 +23,148 @@
         </option></select
       >
     </div>
+    <div>
+      <label for="Head_Name">Head Name : </label>
+      <input
+        type="text"
+        name="Head_Name"
+        class="form-control"
+        placeholder="Head_Name"
+        value="<%=equipment_info.Head_Name%>"
+      />
+    </div>
     <div class="form-group">
-      <label for="Target_Usage">Traget Usage</label>
-      <select class="form-control" name="Target_Usage">
-        <option value="<%=character_info.Target_Usage%>"
-          ><%=character_info.Target_Usage%></option
+      <label for="Head_Status">Head Status :</label>
+      <select class="form-control" name="Head_Status">
+        <option value="<%=equipment_info.Head_Status%>"
+          ><%=equipment_info.Head_Status%></option
         >
-        <option value="On Level Training">On Level Training</option>
-        <option value="On Equipment Upgarding">On Equipment Upgarde</option>
-        <option value="Finished Target">Finished Target</option>
-        <option value="Storage Use">Storage Use</option>
-        <option value="Not Interested Currently"
-          >Not Interested Currently</option
-        >
+        <option value="SWAP">SWAP</option>
+        <option value="OK">OK</option>
+        <option value="DONE">DONE</option>
       </select>
     </div>
-    <div class="form-group">
-      <label for="Location">Location :</label>
-      <select class="form-control" name="Location">
-        <option value="<%=character_info.Location%>"
-          ><%=character_info.Location%></option
-        >
-        <option value="Other-Training Ground">Other-Training Ground</option>
-        <option value="Maple Island">Maple Island</option>
-        <option value="Ereve">Ereve</option>
-        <option value="Victoria Island-Lith Harbor"
-          >Victoria Island-Lith Harbor</option
-        >
-        <option value="Victoria Island-Kerning City"
-          >Victoria Island-Kerning City</option
-        >
-        <option value="Victoria Island-Six Path Cross Way"
-          >Victoria Island-Six Path Cross Way</option
-        >
-        <option value="Victoria Island-Henesys">Victoria Island-Henesys</option>
-        <option value="Victoria Island-Perion">Victoria Island-Perion</option>
-        <!-- <option value="Victoria Island-Ellinel">Victoria Island-Ellinel</option> -->
-        <option value="Victoria Island-Ellinia">Victoria Island-Ellinia</option>
-        <option value="Victoria Island-Nautilus"
-          >Victoria Island-Nautilus</option
-        >
-        <!-- <option value="Victoria Island-Kerning Square">Victoria Island-Elluel</option> -->
-        <option value="Victoria Island-Gold Beach"
-          >Victoria Island-Gold Beach</option
-        >
-        <option value="Victoria Island-Florina Beach"
-          >Victoria Island-Florina Beach</option
-        >
-        <option value="Aquarium">Aquarium</option>
-        <option value="Ludus Lake-Ludibrium">Ludus Lake-Ludibrium</option>
-        <option value="Ludus Lake-Ellin Forest">Ludus Lake-Ellin Forest</option>
-        <option value="Ludus Lake-Korean Folk Town"
-          >Ludus Lake-Korean Folk Town</option
-        >
-        <option value="Ludus Lake-Omega Sector">Ludus Lake-Omega Sector</option>
-        <option value="Nihal Desert-Ariant">Nihal Desert-Ariant</option>
-        <option value="Nihal Desert-Magatia">Nihal Desert-Magatia</option>
-        <option value="Mu Lung Garden-Mu Lung">Mu Lung Garden-Mu Lung</option>
-        <option value="Mu Lung Garden-Herb Town"
-          >Mu Lung Garden-Herb Town</option
-        >
-        <option value="Minar Forest-Leafre">Minar Forest-Leafre</option>
-        <option value="Minar Forest-Kritias">Minar Forest-Kritias</option>
-        <option value="Masteria-New Leaf City">Masteria-New Leaf City</option>
-        <option value="Dawneil-Tynerum">Dawnveil-Tynerum</option>
-        <option value="Dawnveil-Commerci">Dawnveil-Commerci</option>
-        <option value="Dawnveil-Arboren">Dawnveil-Arboren</option>
-        <option value="Phntheon-Pantheon">Phntheon-Pantheon</option>
-        <option value="Phntheon-Reclamation HQ">Phntheon-Reclamation HQ</option>
-        <option value="Fox Point Village">Fox Point Village</option>
-      </select>
+    <div>
+      <label for="Head_StarEnhancement">Head Star Enhancement : </label>
+      <input
+        type="text"
+        name="Head_StarEnhancement"
+        class="form-control"
+        placeholder="Head_StarEnhancement"
+        value="<%=equipment_info.Head_StarEnhancement%>"
+      />
+    </div>
+    <div>
+      <label for="Head_StarEnhancement_Total"
+        >Head StarEnhancement Total :
+      </label>
+      <input
+        type="text"
+        name="Head_StarEnhancement_Total"
+        class="form-control"
+        placeholder="Head_StarEnhancement_Total"
+        value="<%=equipment_info.Head_StarEnhancement_Total%>"
+      />
     </div>
     <div class="form-group">
-      <label for="Professional_Skill_1">Professional_Skill_1 :</label>
-      <select class="form-control" name="Professional_Skill_1">
-        <option value="<%=ps1_default._id%>"
-          ><%=ps1_default.Type%>,Level-<%=ps1_default.Level%></option
+      <label for="Head_Potential_Status">Head Potential Status : </label>
+      <select class="form-control" name="Head_Potential_Status">
+        <option value="<%=potential_default.id%>"
+          ><%=potential_default.Symbol%></option
         >
-        <% character_professional_skills.forEach(character_professional_skill =>
-        { %>
+        <% equipment_potentials.forEach(equipment_potential => { %>
         <option
-          label="<%= character_professional_skill.ID %>.<%= character_professional_skill.Type %>-Level<%= character_professional_skill.Level %>"
-          value="<%= character_professional_skill.id %>"
-        >
-          <% }) %>
-        </option></select
-      >
-    </div>
-    <div class="form-group">
-      <label for="Professional_Skill_2">Professional_Skill_2 :</label>
-      <select class="form-control" name="Professional_Skill_2">
-        <option value="<%=ps2_default._id%>"
-          ><%=ps2_default.Type%>,Level-<%=ps2_default.Level%></option
-        >
-        <% character_professional_skills.forEach(character_professional_skill =>
-        { %>
-        <option
-          label="<%= character_professional_skill.ID %>.<%= character_professional_skill.Type %>-Level<%= character_professional_skill.Level %>"
-          value="<%= character_professional_skill.id %>"
-        >
-          <% }) %>
-        </option></select
-      >
-    </div>
-    <div class="form-group">
-      <label for="Professional_Skill_3">Professional_Skill_3 :</label>
-      <select class="form-control" name="Professional_Skill_3">
-        <option value="<%=ps3_default._id%>"
-          ><%=ps3_default.Type%>,Level-<%=ps3_default.Level%></option
-        >
-        <% character_professional_skills.forEach(character_professional_skill =>
-        { %>
-        <option
-          label="<%= character_professional_skill.ID %>.<%= character_professional_skill.Type %>-Level<%= character_professional_skill.Level %>"
-          value="<%= character_professional_skill.id %>"
-        >
-          <% }) %>
-        </option></select
-      >
-    </div>
-    <div class="form-group">
-      <label for="Professional_Skill_4">Professional_Skill_4 :</label>
-      <select class="form-control" name="Professional_Skill_4">
-        <option value="<%=ps4_default._id%>"
-          ><%=ps4_default.Type%>,Level-<%=ps4_default.Level%></option
-        >
-        <% character_professional_skills.forEach(character_professional_skill =>
-        { %>
-        <option
-          label="<%= character_professional_skill.ID %>.<%= character_professional_skill.Type %>-Level<%= character_professional_skill.Level %>"
-          value="<%= character_professional_skill.id %>"
+          label="<%= equipment_potential.Symbol%>"
+          value="<%= equipment_potential.id %>"
         >
           <% }) %>
         </option></select
       >
     </div>
     <div>
-      <label for="Equip_Slot">Equipment Slot : </label>
+      <label for="Potential_Line_1">Potential Line 1 : </label>
       <input
         type="text"
-        name="Equip_Slot"
+        name="Potential_Line_1"
         class="form-control"
-        placeholder="Equip_Slot"
-        value="<%=character_info.Equip_Slot%>"
+        placeholder="Potential_Line_1"
+        value="<%=equipment_info.Head_Descriptions[0].Potential_Line_1%>"
       />
     </div>
     <div>
-      <label for="Use_Slot">Use_Slot : </label>
+      <label for="Potential_Line_2">Potential Line 2 : </label>
       <input
         type="text"
-        name="Use_Slot"
+        name="Potential_Line_2"
         class="form-control"
-        placeholder="Use_Slot"
-        value="<%=character_info.Use_Slot%>"
+        placeholder="Potential_Line_2"
+        value="<%=equipment_info.Head_Descriptions[0].Potential_Line_2%>"
       />
     </div>
     <div>
-      <label for="Etc_Slot">Etc_Slot : </label>
+      <label for="Potential_Line_3">Potential Line 3 : </label>
       <input
         type="text"
-        name="Etc_Slot"
+        name="Potential_Line_3"
         class="form-control"
-        placeholder="Etc_Slot"
-        value="<%=character_info.Etc_Slot%>"
+        placeholder="Potential_Line_3"
+        value="<%=equipment_info.Head_Descriptions[0].Potential_Line_3%>"
+      />
+    </div>
+    <div class="form-group">
+      <label for="Head_BonusPotential_Status"
+        >Head Bonus Potential Status :
+      </label>
+      <select class="form-control" name="Head_BonusPotential_Status">
+        <option value="<%=bonus_potential_default.id%>"
+          ><%=bonus_potential_default.Symbol%></option
+        >
+        <% equipment_potentials.forEach(equipment_potential => { %>
+        <option
+          label="<%= equipment_potential.Symbol %>"
+          value="<%= equipment_potential.id %>"
+        >
+          <% }) %>
+        </option></select
+      >
+    </div>
+    <div>
+      <label for="BonusPotential_Line_1">Bonus Potential Line 1 : </label>
+      <input
+        type="text"
+        name="BonusPotential_Line_1"
+        class="form-control"
+        placeholder="BonusPotential_Line_1"
+        value="<%=equipment_info.Head_Descriptions[0].BonusPotential_Line_1%>"
       />
     </div>
     <div>
-      <label for="Setup_Slot">Setup_Slot : </label>
+      <label for="BonusPotential_Line_2">Bonus Potential Line 2 : </label>
       <input
         type="text"
-        name="Setup_Slot"
+        name="BonusPotential_Line_2"
         class="form-control"
-        placeholder="Setup_Slot"
-        value="<%=character_info.Setup_Slot%>"
+        placeholder="BonusPotential_Line_2"
+        value="<%=equipment_info.Head_Descriptions[0].BonusPotential_Line_2%>"
       />
     </div>
     <div>
-      <label for="Tradable_Item">Tradable_Item : </label>
+      <label for="BonusPotential_Line_3">Bonus Potential Line 3 : </label>
       <input
         type="text"
-        name="Tradable_Item"
+        name="BonusPotential_Line_3"
         class="form-control"
-        placeholder="Tradable_Item"
-        value="<%=character_info.Tradable_Item%>"
+        placeholder="BonusPotential_Line_3"
+        value="<%=equipment_info.Head_Descriptions[0].BonusPotential_Line_3%>"
       />
     </div>
-    <div>
-      <label for="Movable_Item">Movable_Item : </label>
-      <input
-        type="text"
-        name="Movable_Item"
-        class="form-control"
-        placeholder="Movable_Item"
-        value="<%=character_info.Movable_Item%>"
-      />
-    </div>
-    <div>
-      <label for="Untradable_Item">Untradable_Item : </label>
-      <input
-        type="text"
-        name="Untradable_Item"
-        class="form-control"
-        placeholder="Untradable_Item"
-        value="<%=character_info.Untradable_Item%>"
-      />
-    </div>
-    <div>
-      <label for="Special_Note">Special_Note : </label>
-      <input
-        type="text"
-        name="Special_Note"
-        class="form-control"
-        placeholder="Special_Note"
-        value="<%=character_info.Special_Note%>"
-      />
-    </div>
-    <a href="/user/character_info/<%=character_info.id%>">
-      Go Back To Individual Character Information Detail</a
+    <a href="/user/equipment/equipment_info/<%=equipment_info.id%>">
+      Go Back To Individual Equipment Information Detail</a
     ><br />
-    <a href="/user/character_info"> Go Back To Character Information List</a
+    <a href="/user/equipment/equipment_info/">
+      Go Back To Equipment Information List</a
     ><br />
-    <button type="submit">Update Character Information</button>
+    <button type="submit">Update Equipment Head Information</button>
   </form>
 </div>
 <br />

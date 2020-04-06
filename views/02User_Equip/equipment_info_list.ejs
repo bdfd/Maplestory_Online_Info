@@ -14,7 +14,8 @@
       <th scope="col">Job</th>
       <th scope="col">Attack Range(low)</th>
       <th scope="col">Attack Range(high)</th>
-      <th scope="col">Head</th>
+      <th scope="col">Head Name</th>
+      <th scope="col">Head Info</th>
       <th scope="col">View</th>
     </tr>
   </thead>
@@ -35,6 +36,7 @@
       <% } %>
       <td scope="row"><%=equipment_info[i].Attack_Range_Low%></td>
       <td scope="row"><%=equipment_info[i].Attack_Range_High%></td>
+      <td scope="row"><%=equipment_info[i].Head_Name%></td>
       <td scope="row">(
         <% for (let l = 0; l <equipment_potential.length; l++) {%>
           <%if (JSON. stringify(equipment_info[i].Head_Potential_Status) == JSON. stringify(equipment_potential[l].id)) {%>

@@ -19,14 +19,6 @@ const Equipment_InfoSchema = new Schema({
   Head_Name: {
     type: String,
   },
-  Head_Potential_Status: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Equipment_Potential',
-  },
-  Head_BonusPotential_Status: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Equipment_Potential',
-  },
   Head_Status: {
     type: String,
   },
@@ -36,14 +28,22 @@ const Equipment_InfoSchema = new Schema({
   Head_StarEnhancement_Total: {
     type: Number,
   },
+  Head_Potential_Status: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Equipment_Potential',
+  },
+  Head_BonusPotential_Status: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Equipment_Potential',
+  },
   Head_Descriptions: [
     {
       Potential_Line_1: { type: String },
       Potential_Line_2: { type: String },
       Potential_Line_3: { type: String },
-      BounusPotential_Line_1: { type: String },
-      BounusPotential_Line_2: { type: String },
-      BounusPotential_Line_3: { type: String },
+      BonusPotential_Line_1: { type: String },
+      BonusPotential_Line_2: { type: String },
+      BonusPotential_Line_3: { type: String },
     },
   ],
   //   FaceAccessory_Name: {

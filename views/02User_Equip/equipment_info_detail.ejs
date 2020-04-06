@@ -1,70 +1,80 @@
 <script>
-  document.title = 'Character Info Detail Page';
+  document.title = 'Equipment Info Detail Page';
 </script>
 
 <p>
-  View Specific Character Information
+  View Specific Equipment Information
 </p>
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Level</th>
-      <th scope="col">Job</th>
-      <th scope="col">Class</th>
-      <th scope="col">Category</th>
-      <th scope="col">Target Usage</th>
-      <th scope="col">Professsional Skill 1 Type</th>
-      <th scope="col">Professsional Skill 1 Level</th>
-      <th scope="col">Professsional Skill 2 Type</th>
-      <th scope="col">Professsional Skill 2 Level</th>
-      <th scope="col">Professsional Skill 3 Type</th>
-      <th scope="col">Professsional Skill 3 Level</th>
-      <th scope="col">Professsional Skill 4 Type</th>
-      <th scope="col">Professsional Skill 4 Level</th>
-      <th scope="col">Location</th>
-      <th scope="col">Equipment Slot</th>
-      <th scope="col">Use Slot</th>
-      <th scope="col">Etc Slot</th>
-      <th scope="col">Setup Slot</th>
-      <th scope="col">Tradable Item</th>
-      <th scope="col">Movable Item</th>
-      <th scope="col">Untradable Item</th>
-      <th scope="col">Special</th>
-      <th scope="col">Edit</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row"><%=character_info.ID%></th>
-      <td><%=character_name.Name%></td>
-      <td><%=character_name.Level%></td>
-      <td><%=character_job.Name%></td>
-      <td><%=character_class.Class_Name%></td>
-      <td><%=character_category.Category_Name%></td>
-      <td><%=character_info.Target_Usage%></td>
-      <td><%=character_professional_skill_1.Type%></td>
-      <td><%=character_professional_skill_1.Level%></td>
-      <td><%=character_professional_skill_2.Type%></td>
-      <td><%=character_professional_skill_2.Level%></td>
-      <td><%=character_professional_skill_3.Type%></td>
-      <td><%=character_professional_skill_3.Level%></td>
-      <td><%=character_professional_skill_4.Type%></td>
-      <td><%=character_professional_skill_4.Level%></td>
-      <td><%=character_info.Location%></td>
-      <td><%=character_info.Equip_Slot%></td>
-      <td><%=character_info.Use_Slot%></td>
-      <td><%=character_info.Etc_Slot%></td>
-      <td><%=character_info.Setup_Slot%></td>
-      <td><%=character_info.Tradable_Item%></td>
-      <td><%=character_info.Movabl_Item%></td>
-      <td><%=character_info.Untradable_Item%></td>
-      <td><%=character_info.Special_Note%></td>
-      <td>
-        <a href="/user/character_info/<%=character_info.id%>/edit">Edit</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div>
+  ID : <%=character_name.ID%>
+</div>
+<div>
+  Name : <%=character_name.Name%>
+</div>
+<div>
+  Level : <%=character_name.Level%>
+</div>
+<div>
+  Job : <%=character_job.Name%>
+</div>
+<div>
+  Clas : <%=character_class.Class_Name%>
+</div>
+<div>
+  Category : <%=character_category.Category_Name%>
+</div>
+<div>
+  Attack Range Low : <%=equipment_info.Attack_Range_Low%>
+</div>
+<div>
+  Attack Range High : <%=equipment_info.Attack_Range_High%>
+</div>
+<div>
+  Head Name : <%=equipment_info.Head_Name%>
+</div>
+<div>
+  Head Star Enhancement :<%=equipment_info.Head_StarEnhancement%>
+</div>
+<div>
+  Head Star Enhancement Total :<%=equipment_info.Head_StarEnhancement_Total%>
+</div>
+<div>
+  Head Status : <%=equipment_info.Head_Status%>
+</div>
+<div>
+  Head Potential Rarity & Number of Line : <%=equipment_potential.Type%> with
+  <%=equipment_potential.Number_Of_Line%> lines
+</div>
+<div>
+  Head Potential Line-1 :
+  <%=equipment_info.Head_Descriptions[0].Potential_Line_1%>
+</div>
+<div>
+  Head Potential Line-2 :
+  <%=equipment_info.Head_Descriptions[0].Potential_Line_2%>
+</div>
+<div>
+  Head Potential Line-3
+  :<%=equipment_info.Head_Descriptions[0].Potential_Line_3%>
+</div>
+<div>
+  Head Potential Rarity & Number of Line : <%=equipment_bonus_potential.Type%>
+  with <%=equipment_bonus_potential.Number_Of_Line%> lines
+</div>
+<div>
+  Head Bonus Potential Line-1 :
+  <%=equipment_info.Head_Descriptions[0].BonusPotential_Line_1%>
+</div>
+<div>
+  Head Bonus Potential Line-2
+  :<%=equipment_info.Head_Descriptions[0].BonusPotential_Line_2%>
+</div>
+<div>
+  Head Bonus Potential Line-3
+  :<%=equipment_info.Head_Descriptions[0].BonusPotential_Line_3%>
+</div>
+<a href="/user/equipment/equipment_info/<%=equipment_info.id%>/edit/head"
+  >Edit Head Information</a
+>
+</div>

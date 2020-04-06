@@ -32,32 +32,6 @@
     <input type="text" class="form-control" name="Head_Name" />
   </div>
   <div class="form-group">
-    <label for="Head_Potential_Status">Head Potential Status : </label>
-    <select class="form-control" name="Head_Potential_Status">
-      <% equipment_potentails.forEach(equipment_potentail => { %>
-      <option
-        label="<%= equipment_potentail.Symbol %>"
-        value="<%= equipment_potentail.id %>"
-      >
-        <% }) %>
-      </option></select
-    >
-  </div>
-  <div class="form-group">
-    <label for="Head_BonusPotential_Status"
-      >Head Bonus Potential Status :
-    </label>
-    <select class="form-control" name="Head_BonusPotential_Status">
-      <% equipment_potentails.forEach(equipment_potentail => { %>
-      <option
-        label="<%= equipment_potentail.Symbol %>"
-        value="<%= equipment_potentail.id %>"
-      >
-        <% }) %>
-      </option></select
-    >
-  </div>
-  <div class="form-group">
     <label for="Head_Status">Head Status</label>
     <select class="form-control" name="Head_Status">
       <option value="SWAP">SWAP</option>
@@ -74,6 +48,18 @@
     <input type="text" class="form-control" name="Head_StarEnhancement_Total" />
   </div>
   <div class="form-group">
+    <label for="Head_Potential_Status">Head Potential Status : </label>
+    <select class="form-control" name="Head_Potential_Status">
+      <% equipment_potentials.forEach(equipment_potential => { %>
+      <option
+        label="<%= equipment_potential.Symbol %>"
+        value="<%= equipment_potential.id %>"
+      >
+        <% }) %>
+      </option></select
+    >
+  </div>
+  <div class="form-group">
     <label>Head_Potential_Line_1 : </label>
     <input type="text" class="form-control" name="Head_Potential_Line_1" />
   </div>
@@ -86,28 +72,30 @@
     <input type="text" class="form-control" name="Head_Potential_Line_3" />
   </div>
   <div class="form-group">
-    <label>Head_BounusPotential_Line_1 : </label>
-    <input
-      type="text"
-      class="form-control"
-      name="Head_BounusPotential_Line_1"
-    />
+    <label for="Head_BonusPotential_Status"
+      >Head Bonus Potential Status :
+    </label>
+    <select class="form-control" name="Head_BonusPotential_Status">
+      <% equipment_potentials.forEach(equipment_potential => { %>
+      <option
+        label="<%= equipment_potential.Symbol %>"
+        value="<%= equipment_potential.id %>"
+      >
+        <% }) %>
+      </option></select
+    >
   </div>
   <div class="form-group">
-    <label>Head_BounusPotential_Line_2 : </label>
-    <input
-      type="text"
-      class="form-control"
-      name="Head_BounusPotential_Line_2"
-    />
+    <label>Head_BonusPotential_Line_1 : </label>
+    <input type="text" class="form-control" name="Head_BonusPotential_Line_1" />
   </div>
   <div class="form-group">
-    <label>Head_BounusPotential_Line_3 : </label>
-    <input
-      type="text"
-      class="form-control"
-      name="Head_BounusPotential_Line_3"
-    />
+    <label>Head_BonusPotential_Line_2 : </label>
+    <input type="text" class="form-control" name="Head_BonusPotential_Line_2" />
+  </div>
+  <div class="form-group">
+    <label>Head_BonusPotential_Line_3 : </label>
+    <input type="text" class="form-control" name="Head_BonusPotential_Line_3" />
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button><br />
