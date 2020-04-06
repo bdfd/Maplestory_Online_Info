@@ -174,7 +174,7 @@ router.get('/character_class', async (req, res, next) => {
   } catch (err) {
     console.log('err during get /user/character_class ' + err);
     res.render('error', {
-      error: 'Error in get /user/character_class Show Character Category',
+      error: 'Error in get /user/character_class Show Character Class',
     });
   }
 });
@@ -205,8 +205,7 @@ router.post('/character_class/new', async (req, res, next) => {
         err
     );
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Create Character Category',
+      error: 'Error in post /user/character_class/new Create Character Class',
     });
   }
 });
@@ -223,8 +222,7 @@ router.get('/character_class/:id', async (req, res, next) => {
   } catch (err) {
     console.log('err during get /user/character_class/:id ' + err);
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Demo Character Category',
+      error: 'Error in get /user/character_class/:id Demo Character Class',
     });
   }
 });
@@ -241,8 +239,7 @@ router.get('/character_class/:id/edit', async (req, res, next) => {
   } catch (err) {
     console.log('err during get /user/character_class/:id/edit ' + err);
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Edit Character Category',
+      error: 'Error in get /user/character_class/:id/edit Edit Character Class',
     });
   }
 });
@@ -272,7 +269,7 @@ router.put('/character_class/:id/edit', async (req, res, next) => {
       );
       res.render('error', {
         error:
-          'Error in post /user/character_category/name Update Character_Category',
+          'Error in put /user/character_class/:id/edit Update Character_Class',
       });
     }
   }
@@ -305,8 +302,7 @@ router.get('/character_job', async (req, res, next) => {
   } catch (err) {
     console.log('err during get /user/character_class ' + err);
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Show Character_Category',
+      error: 'Error in get /user/character_job Show Character_Job',
     });
   }
 });
@@ -328,8 +324,7 @@ router.get('/character_job/new', async (req, res, next) => {
   } catch (err) {
     console.log('err during get /character_job/new' + err);
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Creating Character_Category',
+      error: 'Error in get /user/character_job/new Create Character_Job',
     });
   }
 });
@@ -355,8 +350,7 @@ router.post('/character_job/new', async (req, res, next) => {
         err
     );
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Creating Character_Category',
+      error: 'Error in post /user/character_job/new Create Character_Job',
     });
   }
 });
@@ -379,8 +373,7 @@ router.get('/character_job/:id', async (req, res, next) => {
   } catch (err) {
     console.log('err during get /user/character_class/:id ' + err);
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Creating Character_Category',
+      error: 'Error in get /user/character_job/:id Demo Character_Job',
     });
   }
 });
@@ -408,8 +401,7 @@ router.get('/character_job/:id/edit', async (req, res, next) => {
   } catch (err) {
     console.log('err during get /user/character_job/:id/edit ' + err);
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Creating Character_Category',
+      error: 'Error in get /user/character_job/:id/edit Edit Character_Job',
     });
   }
 });
@@ -441,7 +433,7 @@ router.put('/character_job/:id/edit', async (req, res, next) => {
       );
       res.render('error', {
         error:
-          'Error in post /user/character_category/name Creating Character_Category',
+          'Error in put /user/character_class/:id/edit Update Character_Job',
       });
     }
   }
@@ -476,8 +468,7 @@ router.get('/character_name', async (req, res, next) => {
   } catch (err) {
     console.log('err during get /user/character_name ' + err);
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Creating Character_Category',
+      error: 'Error in get /user/character_name Show Character_Name',
     });
   }
 });
@@ -496,8 +487,7 @@ router.get('/character_name/new', async (req, res, next) => {
   } catch (err) {
     console.log('err during get /character_name/new' + err);
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Creating Character_Category',
+      error: 'Error in get /user/character_name/new Create Character_Name',
     });
   }
 });
@@ -522,8 +512,7 @@ router.post('/character_name/new', async (req, res, next) => {
       'err during post /user/character_name/new create new character_name' + err
     );
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Creating Character_Category',
+      error: 'Error in post /user/character_name/new Create Character_Name',
     });
   }
 });
@@ -548,8 +537,7 @@ router.get('/character_name/:id', async (req, res, next) => {
   } catch (err) {
     console.log('err during get /user/character_name/:id ' + err);
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Creating Character_Category',
+      error: 'Error in get /user/character_name/:id Create Character_Name',
     });
   }
 });
@@ -571,8 +559,7 @@ router.get('/character_name/:id/edit', async (req, res, next) => {
   } catch (err) {
     console.log('err during get /user/character_name/:id/edit ' + err);
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Creating Character_Category',
+      error: 'Error in get /user/character_name/:id/edit Edit Character_Name',
     });
   }
 });
@@ -598,7 +585,7 @@ router.put('/character_name/:id/edit', async (req, res, next) => {
       );
       res.render('error', {
         error:
-          'Error in post /user/character_category/name Creating Character_Category',
+          'Error in put /user/character_name/:id/edit Update Character_Name',
       });
     } else {
       console.log(
@@ -607,7 +594,7 @@ router.put('/character_name/:id/edit', async (req, res, next) => {
       );
       res.render('error', {
         error:
-          'Error in post /user/character_cname/:id/edit Creating Character_Category',
+          'Error in put /user/character_cname/:id/edit Update Character_Name',
       });
     }
   }
@@ -637,7 +624,7 @@ router.get('/character_professional_skill', async (req, res, next) => {
     console.log('err during get /user/character_professional_skill ' + err);
     res.render('error', {
       error:
-        'Error in post /user/character_category/name Creating Character_Category',
+        'Error in get /user/character_professional_skill Show Character_Professional_Skill',
     });
   }
 });
@@ -655,7 +642,7 @@ router.get('/character_professional_skill/new', async (req, res, next) => {
     console.log('err during get /character_professional_skill/new' + err);
     res.render('error', {
       error:
-        'Error in post /user/character_category/name Creating Character_Category',
+        'Error in get /user/character_profession_skill/new Create Character_Professional_Skill',
     });
   }
 });
@@ -676,12 +663,12 @@ router.post('/character_professional_skill/new', async (req, res, next) => {
     res.redirect('/user/character_professional_skill/new');
   } catch (err) {
     console.log(
-      'err during during post /user/character_info/new create new character information ' +
+      'err during during post /user/character_professional_skill/new create new character professional skill ' +
         err
     );
     res.render('error', {
       error:
-        'Error in post /user/character_category/name Creating Character_Category',
+        'Error in post /user/character_professional_skill/new Create Character_Professional_Skill',
     });
   }
 });
@@ -702,7 +689,7 @@ router.get('/character_professional_skill/:id', async (req, res, next) => {
     console.log('err during get /user/character_professional_skill/:id ' + err);
     res.render('error', {
       error:
-        'Error in post /user/character_category/name Creating Character_Category',
+        'Error in get /user/character_profession_skill/:id Demo Character_Professional_Skill',
     });
   }
 });
@@ -725,7 +712,7 @@ router.get('/character_professional_skill/:id/edit', async (req, res, next) => {
     );
     res.render('error', {
       error:
-        'Error in post /user/character_category/name Creating Character_Category',
+        'Error in get /user/character_professional_skill/:id/edit Edit Character_Professional_Skill',
     });
   }
 });
@@ -747,18 +734,18 @@ router.put('/character_professional_skill/:id/edit', async (req, res, next) => {
   } catch (err) {
     if (character_professional_skill == null) {
       console.log(
-        'err during put /user/character_professional_skill/:id/edit can not find this Character Category on exist database' +
+        'err during put /user/character_professional_skill/:id/edit can not find this character professional skill on exist database' +
           err
       );
       res.redirect('/user');
     } else {
       console.log(
-        'err during put /user/character_professional_skill/:id/edit update specific character category information ' +
+        'err during put /user/character_professional_skill/:id/edit update specific character professional skill information ' +
           err
       );
       res.render('error', {
         error:
-          'Error in post /user/character_category/name Creating Character_Category',
+          'Error in put /user/character_professional_skill/:id/edit Creating Character_Professional_Skill',
       });
     }
   }
@@ -797,8 +784,7 @@ router.get('/character_info', async (req, res, next) => {
   } catch (err) {
     console.log('err during get /user/character_info ' + err);
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Creating Character_Category',
+      error: 'Error in get /user/character_info Show Character_Info',
     });
   }
 });
@@ -821,8 +807,7 @@ router.get('/character_info/new', async (req, res, next) => {
   } catch (err) {
     console.log('err during get /character_info/new' + err);
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Creating Character_Category',
+      error: 'Error in get /user/character_info/new Creatie Character_Info',
     });
   }
 });
@@ -859,8 +844,7 @@ router.post('/character_info/new', async (req, res, next) => {
         err
     );
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Creating Character_Category',
+      error: 'Error in post /user/character_info/new Create Character Info',
     });
   }
 });
@@ -907,8 +891,7 @@ router.get('/character_info/:id', async (req, res, next) => {
   } catch (err) {
     console.log('err during get /user/character_info/:id ' + err);
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Creating Character_Category',
+      error: 'Error in get /user/character_info/:id Demo Character_Info',
     });
   }
 });
@@ -948,10 +931,9 @@ router.get('/character_info/:id/edit', async (req, res, next) => {
       ps4_default: professional_skill_4_default,
     });
   } catch (err) {
-    console.log('err during get /user/character_info/:id/edit ' + err);
+    console.log('err during get /user/character_info/:id/edit' + err);
     res.render('error', {
-      error:
-        'Error in post /user/character_category/name Creating Character_Category',
+      error: 'Error in get /user/character_info/:id/edit Edit Character_Info',
     });
   }
 });
@@ -994,7 +976,7 @@ router.put('/character_info/:id/edit', async (req, res, next) => {
       );
       res.render('error', {
         error:
-          'Error in post /user/character_category/name Creating Character_Category',
+          'Error in put /user/character_job/:id/edit Update Character_Info',
       });
     }
   }

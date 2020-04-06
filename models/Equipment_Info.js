@@ -8,23 +8,33 @@ const Equipment_InfoSchema = new Schema({
     required: true,
     ref: 'Character_Name',
   },
+  Attack_Range_Low: {
+    type: Number,
+    required: true,
+  },
+  Attack_Range_High: {
+    type: Number,
+    required: true,
+  },
   Head_Name: {
     type: String,
-    required: true,
   },
   Head_Potential_Status: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
     ref: 'Equipment_Potential',
   },
   Head_BonusPotential_Status: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
     ref: 'Equipment_Potential',
   },
   Head_Status: {
     type: String,
-    required: true,
+  },
+  Head_StarEnhancement: {
+    type: Number,
+  },
+  Head_StarEnhancement_Total: {
+    type: Number,
   },
   Head_Descriptions: [
     {

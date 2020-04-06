@@ -4,6 +4,7 @@ var router = express.Router();
 const Equipment_Potential = require('../models/Equipment_Potential');
 const Equipment_Info = require('../models/Equipment_Info');
 const Character_Name = require('../models/Character_Name');
+const Character_Job = require('../models/Character_Job');
 // app.use('/user/equipment', userEquipRouter);
 
 /* 
@@ -163,14 +164,16 @@ router.get('/equipment_info', async (req, res, next) => {
   try {
     let equipment_info = await Equipment_Info.find({});
     let character_name = await Character_Name.find({});
+    let character_job = await Character_Job.find({});
     let equipment_potential = await Equipment_Potential.find({});
 
     res.render('02User_Equip/equipment_info_list', {
       equipment_info: equipment_info,
       character_name: character_name,
+      character_job: character_job,
       equipment_potential: equipment_potential,
     });
-    // console.log(character_info);
+    console.log(equipment_info);
   } catch (err) {
     console.log('err during get /user/equipment/equipment_info/ ' + err);
     res.render('error', {
@@ -186,6 +189,7 @@ router.get('/equipment_info', async (req, res, next) => {
 router.get('/equipment_info/new', async (req, res, next) => {
   try {
     let character_names = await Character_Name.find({});
+
     let equipment_potentails = await Equipment_Potential.find({});
     let equipment_info = new Equipment_Info();
     res.render('02User_Equip/equipment_info_add', {
@@ -210,6 +214,8 @@ router.post('/equipment_info/new', async (req, res, next) => {
   let equipment_info = new Equipment_Info({
     Name: req.body.Name,
     Head_Name: req.body.Head_Name,
+    Attack_Range_Low: req.body.Attack_Range_Low,
+    Attack_Range_High: req.body.Attack_Range_High,
     Head_Potential_Status: req.body.Head_Potential_Status,
     Head_BonusPotential_Status: req.body.Head_BonusPotential_Status,
     Head_Status: req.body.Head_Status,
@@ -221,6 +227,8 @@ router.post('/equipment_info/new', async (req, res, next) => {
       BounusPotential_Line_2: req.body.Head_BounusPotential_Line_2,
       BounusPotential_Line_3: req.body.Head_BounusPotential_Line_3,
     },
+    Head_StarEnhancement: req.body.Head_StarEnhancement,
+    Head_StarEnhancement_Total: req.body.Head_StarEnhancement_Total,
   });
   console.log('equipment_info ', equipment_info);
   try {
@@ -234,6 +242,54 @@ router.post('/equipment_info/new', async (req, res, next) => {
     res.render('error', {
       error:
         'Error in post /user/equipment/equipment_info/new Creating Equipment Info Potential',
+    });
+  }
+});
+
+//router address: /user/character_info/:id
+//descriptions: View Character Indidual Info
+//comments:
+router.get('/character_info/:id', async (req, res, next) => {
+  try {
+    let character_info = await Character_Info.findById(req.params.id);
+    // console.log('character_info', character_info);
+    let character_name = await Character_Name.findById(character_info.Name);
+    // console.log('character_name', character_name);
+    let character_job = await Character_Job.findById(character_name.Job);
+    // console.log('character_job', character_job);
+    let character_class = await Character_Class.findById(character_job.Class);
+    let character_category = await Character_Category.findById(
+      character_job.Category
+    );
+    let character_professional_skill_1 = await Character_Professional_Skill.findById(
+      character_info.Professional_Skill_1
+    );
+    let character_professional_skill_2 = await Character_Professional_Skill.findById(
+      character_info.Professional_Skill_2
+    );
+    let character_professional_skill_3 = await Character_Professional_Skill.findById(
+      character_info.Professional_Skill_3
+    );
+    let character_professional_skill_4 = await Character_Professional_Skill.findById(
+      character_info.Professional_Skill_4
+    );
+    // console.log('character_info', character_info);
+    res.render('02User/character_info_detail', {
+      character_info: character_info,
+      character_name: character_name,
+      character_job: character_job,
+      character_class: character_class,
+      character_category: character_category,
+      character_professional_skill_1: character_professional_skill_1,
+      character_professional_skill_2: character_professional_skill_2,
+      character_professional_skill_3: character_professional_skill_3,
+      character_professional_skill_4: character_professional_skill_4,
+    });
+  } catch (err) {
+    console.log('err during get /user/character_info/:id ' + err);
+    res.render('error', {
+      error:
+        'Error in post /user/character_category/name Creating Character_Category',
     });
   }
 });
