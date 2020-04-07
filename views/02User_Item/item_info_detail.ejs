@@ -1,0 +1,35 @@
+<script>
+  document.title = 'Item Info Detail Page';
+</script>
+
+<p>
+  View Specific Item Information
+</p>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Type</th>
+      <th scope="col">Buy In(low)</th>
+      <th scope="col">Buy In(high)</th>
+      <th scope="col">Sell Out Price</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%=item_info.ID%></th>
+      <td scope="row"><%=item_info.Name%></td>
+      <td scope="row"><%=item_type.Category%></td>
+      <td scope="row"><%=item_type.Type%></td>
+      <td scope="row"><%=item_info.Buy_In_Low%></td>
+      <td scope="row"><%=item_info.Buy_In_High%></td>
+      <td scope="row"><%=item_info.Sell_Out_Price%></td>
+      <td>
+        <a href="/user/item/item_info/<%=item_info.id%>/edit">Edit</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

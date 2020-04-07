@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const Item_Type = require('../models/Item_Type');
+const Item_Info = require('../models/Item_Info');
 // app.use('/user/item', userItemRouter);
 
 /* 
@@ -123,6 +124,156 @@ router.put('/item_type/:id/edit', async (req, res, next) => {
       );
       res.render('error', {
         error: 'Error in put /user/item/item_type/:id/edit Update Item Type',
+      });
+    }
+  }
+});
+
+/* 
+
+
+
+Item Info Function Router Start Here
+
+
+
+*/
+
+// router address: /user/item/item_info
+// descriptions: Item_Info
+// comments: Demo all Item Info
+router.get('/item_info', async (req, res, next) => {
+  try {
+    let item_info = await Item_Info.find({});
+    let item_type = await Item_Type.find({});
+    res.render('02User_Item/item_info_list', {
+      item_info: item_info,
+      item_type: item_type,
+    });
+  } catch (err) {
+    console.log('err during get /user/item/item_info ' + err);
+    res.render('error', {
+      error: 'Error in get /user/item/item_info Show Item Info',
+    });
+  }
+});
+
+//router address: /user/item/item_info/new
+//descriptions: Show Item_Info Register Form
+//comments: Input Necessary Item_Info Info
+router.get('/item_info/new', async (req, res, next) => {
+  try {
+    let item_types = await Item_Type.find({});
+    let item_info = new Item_Info();
+    res.render('02User_Item/item_info_add', {
+      item_types: item_types,
+      item_info: item_info,
+    });
+    // console.log(item_types);
+  } catch (err) {
+    console.log('err during get /user/item/item_info/new' + err);
+    res.render('error', {
+      error: 'Error in get /user/item/item_info/new Create Item Info',
+    });
+  }
+});
+
+//router address: /user/item/item_info/new
+//descriptions: Obtain New Item Info
+//comments: Save Into Online MongoDB Database
+router.post('/item_info/new', async (req, res, next) => {
+  // console.log('req.body', req.body);
+  let item_info = new Item_Info({
+    ID: req.body.ID,
+    Name: req.body.Name,
+    Type: req.body.Type,
+    Buy_In_Low: req.body.Buy_In_Low,
+    Buy_In_High: req.body.Buy_In_High,
+    Sell_Out_Price: req.body.Sell_Out_Price,
+  });
+  try {
+    await item_info.save();
+    res.redirect('/user/item/item_info/new');
+  } catch (err) {
+    console.log(
+      'err during during post /user/item/item_info/new create new item_info ' +
+        err
+    );
+    res.render('error', {
+      error: 'Error in post /user/item/item_info/new Create Item_Info',
+    });
+  }
+});
+
+//router address: /user/item/item_info/:id
+//descriptions: View Item Info
+//comments:
+router.get('/item_info/:id', async (req, res, next) => {
+  try {
+    let item_info = await Item_Info.findById(req.params.id);
+    let item_type = await Item_Type.findById(item_info.Type);
+    res.render('02User_Item/item_info_detail', {
+      item_info: item_info,
+      item_type: item_type,
+    });
+  } catch (err) {
+    console.log('err during get /user/item/item_info/:id ' + err);
+    res.render('error', {
+      error: 'Error in get /user/item/item_info/:id Demo Item Info',
+    });
+  }
+});
+
+//router address /user/item/item_info/:id/edit
+//descriptions: Show Detail Item Info Revise Form
+//comments: Show detail information of a Item Info
+router.get('/item_info/:id/edit', async (req, res, next) => {
+  try {
+    let item_info = await Item_Info.findById(req.params.id);
+    let item_types = await Item_Type.find({});
+    let type_default = await Item_Type.findById(item_info.Type);
+    res.render('02User_Item/item_info_edit', {
+      item_info: item_info,
+      item_types: item_types,
+      type_default: type_default,
+    });
+  } catch (err) {
+    console.log('err during get /user/item/item_info/:id/edit ' + err);
+    res.render('error', {
+      error: 'Error in get /user/item/item_info/:id/edit Edit Item_Info',
+    });
+  }
+});
+
+//router address /user/item/item_info/:id/edit
+//descriptions: Update Detail Item Information
+//comments: Change detail information of Item Info
+router.put('/item_info/:id/edit', async (req, res, next) => {
+  let item_info;
+  try {
+    item_info = await Item_Info.findById(req.params.id);
+    (item_info.ID = req.body.ID),
+      (item_info.Name = req.body.Name),
+      (item_info.Type = req.body.Type);
+    item_info.Buy_In_Low = req.body.Buy_In_Low;
+    item_info.Buy_In_High = req.body.Buy_In_High;
+    item_info.Sell_Out_Price = req.body.Sell_Out_Price;
+    await item_info.save();
+    res.redirect('/user/item/item_info');
+  } catch (err) {
+    if (item_info == null) {
+      console.log(
+        'err during put /user/item/item_info/:id/edit can not find this Item Info on exist database' +
+          err
+      );
+      res.redirect('/user');
+    } else {
+      console.log(
+        'err during put /user/item/item_info/:id/edit update specific item information ' +
+          err
+      );
+      res.render('error', {
+        error: 'Error in put /user/item/item_info/:id/edit Update Item_Info',
       });
     }
   }

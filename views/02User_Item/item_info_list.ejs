@@ -1,0 +1,43 @@
+<script>
+    document.title = 'Item Info List Page';
+</script>
+
+<p>Item Info List</p>
+<a href="/user/dashboard">Go Back Dashboard</a><br>
+<a href="/user/item/item_info/new">Create Item Info</a><br><br>
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>   
+        <th scope="col">Category</th>
+        <th scope="col">Type</th>  
+        <th scope="col">Buy-In(low)</th>  
+        <th scope="col">Buy-In(high)</th>  
+        <th scope="col">Sell Out Price</th>  
+        <th scope="col">View</th>    
+        <th scope="col">Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% for (let i = 0; i <item_info.length; i++) {%>
+        <tr>
+          <th scope="row"><%=item_info[i].ID%></th>
+          <td scope="row"><%=item_info[i].Name%></td>
+          <% for (let j = 0; j <item_type.length; j++) {%>
+            <%if (JSON. stringify(item_info[i].Type) ==JSON. stringify(item_type[j].id)){%>
+              <td scope="row"><%=item_type[j].Category%></td> 
+              <td scope="row"><%=item_type[j].Type%></td>   
+            <% } %>    
+          <% } %>
+          <td scope="row"><%=item_info[i].Buy_In_Low%></td>
+          <td scope="row"><%=item_info[i].Buy_In_High%></td>
+          <td scope="row"><%=item_info[i].Sell_Out_Price%></td>
+          <td scope="row"><a href="/user/item/item_info/<%=item_info[i].id%>">View</a></td>
+          <td scope="row"><a href="/user/item/item_info/<%=item_info[i].id%>/edit">Edit</a></td>   
+        </tr>
+    <% } %>
+    </tbody>
+</table>
+<br>
