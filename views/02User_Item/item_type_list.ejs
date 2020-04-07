@@ -1,0 +1,31 @@
+<script>
+    document.title = 'Item Type List Page';
+</script>
+
+<p>Item Type List</p>
+<a href="/user/dashboard">Go Back Dashboard</a><br>
+<a href="/user/item/item_type/new">Create New Item Type</a><br><br>
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Category</th>   
+        <th scope="col">Type</th>   
+        <th scope="col">View</th>    
+        <th scope="col">Edit</th>    
+      </tr>
+    </thead>
+    <tbody>
+    <% for (let i = 0; i <item_type.length; i++) {%>
+        <tr>
+          <th scope="row"><%=item_type[i].ID%></th>
+          <td scope="row"><%=item_type[i].Category%></td>
+          <td scope="row"><%=item_type[i].Type%></td>
+          <td scope="row"><a href="/user/item/item_type/<%=item_type[i].id%>">View</a></td>
+          <td scope="row"><a href="/user/item/item_type/<%=item_type[i].id%>/edit">Edit</a></td>       
+        </tr>
+    <% } %>
+    </tbody>
+</table>
+

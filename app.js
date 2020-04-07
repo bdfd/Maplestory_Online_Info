@@ -15,11 +15,12 @@ const db = require('./config/key').MongoURI;
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log('MongoDB connection is online...'))
-  .catch(err => console.log('error in creating DB' + err));
+  .catch((err) => console.log('error in creating DB' + err));
 
 var indexRouter = require('./routes/01Index');
 var userRouter = require('./routes/02User');
 var userEquipRouter = require('./routes/02User_Equip');
+var userItemRouter = require('./routes/02User_Item');
 var charRouter = require('./routes/03Character');
 var equipRouter = require('./routes/04Equipment');
 var marketRouter = require('./routes/05Market_Trend');
@@ -48,6 +49,7 @@ app.use(cors());
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/user/equipment', userEquipRouter);
+app.use('/user/item', userItemRouter);
 app.use('/character', charRouter);
 app.use('/equipment', equipRouter);
 app.use('/market', marketRouter);
@@ -56,12 +58,12 @@ app.use('/note', trianingRouter);
 app.use('/other', otherRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

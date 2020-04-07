@@ -1,0 +1,49 @@
+<script>
+  document.title = 'Item Type Edit Page';
+</script>
+<p>
+  edit item type
+</p>
+
+<div>
+  <form
+    action="/user/item/item_type/<%=item_type.id%>/edit?_method=put"
+    method="post"
+  >
+    <div>
+      <label for="ID">ID : </label>
+      <input
+        type="text"
+        name="ID"
+        class="form-control"
+        placeholder="ID"
+        value="<%=item_type.ID%>"
+      />
+    </div>
+    <div>
+      <label for="Category">Category : </label>
+      <input
+        type="text"
+        name="Category"
+        class="form-control"
+        placeholder="Category"
+        value="<%=item_type.Category%>"
+      />
+    </div>
+    <div>
+      <label for="Type">Type : </label>
+      <input
+        type="text"
+        name="Type"
+        class="form-control"
+        placeholder="Type"
+        value="<%=item_type.Type%>"
+      />
+    </div>
+    <a href="/user/item/item_type/<%=item_type.id%>">
+      Go Back To Item Type Detail</a
+    ><br />
+    <a href="/user/item/item_type"> Go Back To Item Type List</a><br />
+    <button type="submit">Update Item Type</button>
+  </form>
+</div>

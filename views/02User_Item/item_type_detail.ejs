@@ -1,0 +1,27 @@
+<script>
+  document.title = 'Character Category Detail Page';
+</script>
+
+<p>
+  View Specific Character Category Information
+</p>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Category</th>
+      <th scope="col">Type</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%=item_type.ID%></th>
+      <td scope="row"><%=item_type.Category%></td>
+      <td scope="row"><%=item_type.Type%></td>
+      <td>
+        <a href="/user/item/item_type/<%=item_type.id%>/edit">Edit</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

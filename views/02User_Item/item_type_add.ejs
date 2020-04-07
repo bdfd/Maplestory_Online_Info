@@ -1,0 +1,24 @@
+<script>
+  document.title = 'Add Item Type Page';
+</script>
+
+<h3>
+  Add Item Type Info
+</h3>
+
+<form action="/user/item/item_type/new" method="post">
+  <div class="form-group">
+    <label>ID : </label>
+    <input type="text" class="form-control" name="ID" />
+  </div>
+  <div class="form-group">
+    <label>Category : </label>
+    <input type="text" class="form-control" name="Category" />
+  </div>
+  <div class="form-group">
+    <label>Type : </label>
+    <input type="text" class="form-control" name="Type" />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button><br />
+  <a href="/user/item/item_type"> Go Back To Item Type List</a>
+</form>
